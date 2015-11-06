@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- License: Humanitarian-Agpl: http://namzezam.wikidot.com/humanitarian-agpl-license -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>privateq</title>
+    <!-- Bootstrap core CSS   -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="dataTables.bootstrap.css" rel="stylesheet"> 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+     
+	
+   
+
+    -->
+<script src="jquery.1.11.2.min.js"></script>    
+     <script src="bootstrap.min.js"></script>
+     <script src="jquery.csv.min.js"></script>
+   
+    <script src="jquery.dataTables.min.js"></script>    
+    <script src="dataTables.bootstrap.js"></script>
+    <script src='csv_to_html_table.js'></script>
+    
+    <div class="container-fluid">
+ 	 <p> Use In Privacy easily with <a href="http://www.gpg4win.org/">gpg4win</a> or <a href="http://utils.kde.org/projects/kgpg/">kgpg</a> and <a href="https://guardianproject.info/code/gnupg/">guardianproject</a>.</p>
+	 <div> <textarea  id="ioput" onclick="this.focus();this.select()" ></textarea></div>
+	 <div>
+		<button onclick="init_table(document.getElementById('ioput').value)">View</button>
+		<button onclick="search()">Ask</button>
+	 </div>    
+     <div id='table-container'></div>
+    </div><!-- /.container 
+    <footer class='footer'>      <div class='container-fluid'> </div> </footer>
+<script>
+var Platform =  navigator.platform ;
+
+document.getElementById("container-fluid").innerHTML = Platform;
+</script>
+-->
+ 	 <p> Privately querying, for secure media storage, send to individuals and transmit to specific group:<br>
+	  The "Ask" retrieve encrypted data, which, by the user's cut and paste to gpg of the client, <br>
+	  is decrypted and then being paste back in csv format to be "View"ed as a table.<br> 	  
+ 	  Each fields is encrypted by the pub key of the scope defined by the column,
+ 	  where the scopes are: <br>
+ 	  0 of the data of owner of the record, <br>
+ 	  1 of data visible to the owner as one of many children of first ancestor etc.<br>
+ 	  for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>
+ 	   </p> 
+  </body>
+</html>
