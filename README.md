@@ -1,4 +1,4 @@
-# The private is a protocol for securing tables implemented into html with js javascript and css
+# The privateQ is a protocol for securing tables implemented into html with js javascript and css
  <p> Privately querying, for secure media storage, send to individuals and transmit to specific group:<br>
 	  The "Ask" retrieve encrypted data, which, by the user's cut and paste to gpg of the client, <br>
 	  is decrypted and then being paste back in csv format to be "View"ed as a table.<br> 	  
