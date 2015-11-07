@@ -11,7 +11,7 @@
  	   
 table of which each column is encrypted symmetrically by different key
 under humanitarian-agpl-license http://namzezam.wikidot.com/humanitarian-agpl-license
-![1](/images/http://comcomist.wdfiles.com/local--files/4-new-mediums-in-our-living-the-iiaom-rcoin-comcom-liquid-un/Screenshot%20-%2011072015%20-%2009%3A49%3A32%20AM.png)
+![1](http://comcomist.wdfiles.com/local--files/4-new-mediums-in-our-living-the-iiaom-rcoin-comcom-liquid-un/Screenshot%20-%2011072015%20-%2009%3A49%3A32%20AM.png)
 
 
 http://comcomist.wikidot.com/local--files/4-new-mediums-in-our-living-the-iiaom-rcoin-comcom-liquid-un/Screenshot%20-%2011072015%20-%2009%3A50%3A50%20AM.png
