@@ -1,4 +1,6 @@
 # The privateQ is a protocol for securing tables implemented into html with js javascript and css
+
+[![Join the chat at https://gitter.im/comcomist/privateq](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/comcomist/privateq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
  <p> Privately querying, for secure media storage, send to individuals and transmit to specific group:<br>
 	  The "Ask" retrieve encrypted data, which, by the user's cut and paste to gpg of the client, <br>
 	  is decrypted and then being paste back in csv format to be "View"ed as a table.<br> 	  
