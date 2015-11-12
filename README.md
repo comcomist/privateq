@@ -1,6 +1,6 @@
 # The privateQ is a protocol for securing tables implemented into html with js javascript and css
 Under [humanitarian-agpl-license](http://namzezam.wikidot.com/humanitarian-agpl-license) a table on a server of which each field is encrypted asymmetrically by different key
-====
+---
 Privately querying, for secure media storage, send to individuals and transmit to specific group:<br>
 Using table of which each column is encrypted symmetrically by different key<br>
  	1. Online: by browser Downloading Encrypted Record to ( external - usb/sd) device.<br>
