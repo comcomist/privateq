@@ -25,8 +25,17 @@
 	
    
 
-    -->
-<script src="jquery.1.11.2.min.js"></script>    
+    SHA-2
+
+SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as SHA-1, though it appears to provide much better security.
+    
+<script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
+<script>
+    var hash = CryptoJS.SHA256("Message");
+</script>
+-->
+	 <script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
+	 <script src="jquery.1.11.2.min.js"></script>    
      <script src="bootstrap.min.js"></script>
      <script src="jquery.csv.min.js"></script>
    
@@ -35,29 +44,117 @@
     <script src='csv_to_html_table.js'></script>
     
     <div class="container-fluid">
- 	 <p> Use In Privacy easily with <a href="http://www.gpg4win.org/">gpg4win</a> or <a href="http://utils.kde.org/projects/kgpg/">kgpg</a> and <a href="https://guardianproject.info/code/gnupg/">guardianproject</a>.</p>
-	 <div> <textarea  id="ioput" onclick="this.focus();this.select()" ></textarea></div>
-	 <div>
+	<div> 
+<a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a>
+	</div>	
+ 	 <div> 
+		 <input type="file" id="fileToLoad" multiple>
+		 <button onclick="loadFileAsText()">Put</button>
 		<button onclick="init_table(document.getElementById('ioput').value)">View</button>
-		<button onclick="search()">Ask</button>
-	 </div>    
+		<button onclick="hash(document.getElementById('ioput').value)">Mask</button>
+		</div><div>
+		 <textarea  id="ioput" onclick="this.focus();this.select()" ></textarea>	
+
+
+		
+		
+	 </div>
+
+	 
      <div id='table-container'></div>
+     
+      	 <p> 
+			 1. Download (to external device) from any services storing your (sensitive) data being encrypted with your public key and then work offline.<br>
+2. Decrypt it with your exteranl app (<a href="http://www.gpg4win.org/">gpg4win</a> or <a href="http://utils.kde.org/projects/kgpg/">kgpg</a> and <a href="https://guardianproject.info/code/gnupg/">guardianproject</a>) and save the decrypted plaintext file as temporary file (on external device).<br>
+3. Browse the temporary file (formed csv), delete it and Put and View it here as a table. <br> 	
+			 
+			 Privately querying, for secure media storage, send to individuals and transmit to specific group:<br>
+ 	  On the server, each fields is encrypted by the pub key of the scope defined by the column,<br>
+ 	  where the scopes are: <br>
+ 	  0 of the data of owner of the record, <br>
+ 	  1 of data visible to the owner as one of many children of first ancestor etc.<br>
+ 	  for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>
+
+ 	   </p>
+    
     </div><!-- /.container 
+
+ 
+ and name2mask with <a href="http://sourceforge.net/projects/quickhash/">quickhash</a>
+ <div> 
+ 	<button onclick="search()">Ask</button>
+</div>    
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+		
     <footer class='footer'>      <div class='container-fluid'> </div> </footer>
+
 <script>
 var Platform =  navigator.platform ;
 
 document.getElementById("container-fluid").innerHTML = Platform;
 </script>
+
+http://www.w3schools.com/html/html5_draganddrop.asp
+/home/a/Downloads/jscii-master/
+var buffer=ArrayBuffer(lenght)
+var view   = new Int32Array(buffer);
+from binarry to hex eavry 4 bytes use use var n=bytes
+string +=num.toString(16);
+0000000
+1. no textarea and no use of clipors and no selcet, instead a bootum for pasing the content  to parmeter!!!
+2. from server downloading (to external device) encrypted data by brwoeser  and 
+3.  extarnly: user use data with exteranl (kgpg )app and save it to temparory file (on external device)
+4. open  temp  file make tabe form cvs
+5. extarnly: delete temp
+00000000
+---
+name2mask bottom to hash the text using http://sourceforge.net/projects/quickhash/ 
+add bottom?
+
+cheack being offline
+
+lock the clipord
+drag file to text
+//FileReader.readAsText
 -->
- 	 <p> Privately querying, for secure media storage, send to individuals and transmit to specific group:<br>
-	  The "Ask" retrieve encrypted data, which, by the user's cut and paste to gpg of the client, <br>
-	  is decrypted and then being paste back in csv format to be "View"ed as a table.<br> 	  
- 	  Each fields is encrypted by the pub key of the scope defined by the column,
- 	  where the scopes are: <br>
- 	  0 of the data of owner of the record, <br>
- 	  1 of data visible to the owner as one of many children of first ancestor etc.<br>
- 	  for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>
- 	   </p> 
+
+<script>
+function loadFileAsText()
+{
+var fileToLoad = document.getElementById("fileToLoad").files[0];
+var fileReader = new FileReader();
+fileReader.onload = function(fileLoadedEvent) 
+{
+//    var textFromFileLoaded 
+    document.getElementById('ioput').value= fileLoadedEvent.target.result;
+    document.getElementById("inputTextToSave").value = textFromFileLoaded;
+};
+fileReader.readAsText(fileToLoad, "UTF-8");
+} 
+function hash(data){
+    document.getElementById('ioput').value= CryptoJS.SHA256(data);
+}
+/////not now
+/*
+  function handleFileSelect(evt) {//http://www.html5rocks.com/en/tutorials/file/dndfiles/
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '</li>');
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  */
+</script>
+
+ 
   </body>
 </html>
