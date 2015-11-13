@@ -34,10 +34,8 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
     var hash = CryptoJS.SHA256("Message");
 </script>
 -->
-<script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
-
-
-<script src="jquery.1.11.2.min.js"></script>    
+	 <script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
+	 <script src="jquery.1.11.2.min.js"></script>    
      <script src="bootstrap.min.js"></script>
      <script src="jquery.csv.min.js"></script>
    
@@ -46,41 +44,57 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
     <script src='csv_to_html_table.js'></script>
     
     <div class="container-fluid">
- 	 <p> Use In Privacy easily with <a href="http://www.gpg4win.org/">gpg4win</a> or <a href="http://utils.kde.org/projects/kgpg/">kgpg</a> and <a href="https://guardianproject.info/code/gnupg/">guardianproject</a> and name2mask with <a href="http://sourceforge.net/projects/quickhash/">quickhash</a>.
- 	 </p>
-	 <div> <textarea  id="ioput" onclick="this.focus();this.select()" ></textarea></div>
-	 <div>
+	<div> 
+<a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a>
+	</div>	
+ 	 <div> 
+		 <input type="file" id="fileToLoad" multiple>
+		 <button onclick="loadFileAsText()">Put</button>
 		<button onclick="init_table(document.getElementById('ioput').value)">View</button>
-		<button onclick="search()">Ask</button>
-		<button onclick="hash(document.getElementById('ioput').value)">name2mask</button>
+		<button onclick="hash(document.getElementById('ioput').value)">Mask</button>
+		</div><div>
+		 <textarea  id="ioput" onclick="this.focus();this.select()" ></textarea>	
 
-<tr>
-    <td>Select a File to open:</td>
-    <td><input type="file" id="fileToLoad"></td>
-    <td><button onclick="loadFileAsText()">Load Selected File</button><td>
-</tr>
- <!-- 
+
+		
+		
+	 </div>
+
+	 
+     <div id='table-container'></div>
+     
+      	 <p> 
+			 1. Download (to external device) from any services storing your (sensitive) data being encrypted with your public key and then work offline.<br>
+2. Decrypt it with your exteranl app (<a href="http://www.gpg4win.org/">gpg4win</a> or <a href="http://utils.kde.org/projects/kgpg/">kgpg</a> and <a href="https://guardianproject.info/code/gnupg/">guardianproject</a>) and save the decrypted plaintext file as temporary file (on external device).<br>
+3. Browse the temporary file (formed csv), delete it and Put and View it here as a table. <br> 	
+			 
+			 Privately querying, for secure media storage, send to individuals and transmit to specific group:<br>
+ 	  On the server, each fields is encrypted by the pub key of the scope defined by the column,<br>
+ 	  where the scopes are: <br>
+ 	  0 of the data of owner of the record, <br>
+ 	  1 of data visible to the owner as one of many children of first ancestor etc.<br>
+ 	  for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>
+
+ 	   </p>
+    
+    </div><!-- /.container 
+
+ 
+ and name2mask with <a href="http://sourceforge.net/projects/quickhash/">quickhash</a>
+ <div> 
+ 	<button onclick="search()">Ask</button>
+</div>    
 <input type="file" id="files" name="files[]" multiple />
 <output id="list"></output>
-		-->
-	 </div>    
-     <div id='table-container'></div>
-    </div><!-- /.container 
+		
     <footer class='footer'>      <div class='container-fluid'> </div> </footer>
+
 <script>
 var Platform =  navigator.platform ;
 
 document.getElementById("container-fluid").innerHTML = Platform;
 </script>
--->
- 	 <p> Privately querying, for secure media storage, send to individuals and transmit to specific group:<br>
-	  The "Ask" retrieve encrypted data, which, by the user's cut and paste to gpg of the client, <br>
-	  is decrypted and then being paste back in csv format to be "View"ed as a table.<br> 	  
- 	  Each fields is encrypted by the pub key of the scope defined by the column,
- 	  where the scopes are: <br>
- 	  0 of the data of owner of the record, <br>
- 	  1 of data visible to the owner as one of many children of first ancestor etc.<br>
- 	  for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>
+
 http://www.w3schools.com/html/html5_draganddrop.asp
 /home/a/Downloads/jscii-master/
 var buffer=ArrayBuffer(lenght)
@@ -101,9 +115,10 @@ add bottom?
 cheack being offline
 
 lock the clipord
- 	   </p>
 drag file to text
 //FileReader.readAsText
+-->
+
 <script>
 function loadFileAsText()
 {
