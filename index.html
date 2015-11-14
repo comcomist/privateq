@@ -43,11 +43,11 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
     <script src="dataTables.bootstrap.js"></script>
     <script src='csv_to_html_table.js'></script>
     <div class="container-fluid">
-	<div> 
+	<div id='img'> 
 <a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a>
 	</div>	
  	 <div> 
-		 <input type="file" id="fileToLoad" multiple>
+		 <input type="file" id="fileToLoad"> <!-- multiple-->
 		 <button onclick="loadFileAsText()">Put</button>
 		<button onclick="init_table(document.getElementById('ioput').value)">View</button>
 		<button onclick="hash(document.getElementById('ioput').value)">Mask</button>
@@ -56,9 +56,13 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
 	       </div>
      <div id='table-container'></div>
      <p> 
-		1. Download (to external device) from any services storing your (sensitive) data being encrypted with your public key and then work offline.<br>
-		2. Decrypt it with your exteranl app <span class='value'></span> and save the decrypted plaintext file as temporary file (on external device).<br>
-		3. Browse the temporary file (formed csv), delete it and Put and View it here as a table. 
+		1. Download (to external device and from eg. dropcanvas) your (sensitive) data being encrypted with your public key and then work offline.<br>
+		2. Decrypt it with your exteranl <span class='var_app'></span> and save the decrypted plaintext file as temporary file (on external device).<br>
+		3. "Browse" the temporary file , delete it and "Put" it and then <br>
+		3.1. "View" it (when formed csv) to have it as a table or <br>
+		3.2. "Mask" it to have its SHA-256 as its id.<br>
+		3.2.1. Now you can cut and or paste the "Mask"ed over other files to produce your <a href="http://namzezam.wikidot.com/blog:12" >iiaom </a> or any other id  (for having such ids, by being in first column, indexing their reputation earned in your transactions in distributed table "View"ed from csv table being download/uploaded eg. to dropcanvas).<br>
+		3.2.1.1. You make your iiaom by symmetrical encrypting your image, then "Put", "Mask" and cut it, then "Put" and "Mask the image and then paste and "Mask".
 	 </p><p> 	
 			 
 		PrivateQ is a protocol for Privately querying, while having  media storage secure, when sending to individuals or transmiting to specific group, while<br>
@@ -110,26 +114,25 @@ drag file to text
 //FileReader.readAsText
 -->
 <script>
- var online = navigator.onLine,
-     os		=navigator.platform.slice(0, 1),
+ var os		=navigator.platform.slice(0, 1),
      app	= '<a href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
      if (os=='L') {app	 ='<a href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
      else if (os=='W'){app='<a href="http://www.gpg4win.org/">gpg4win</a>'; } 
- document.querySelector('.container-fluid .value').innerHTML = app ;//+ online;
- $(".container-fluid .value").html(); // Using the jQuery library
+    
+ document.querySelector('.container-fluid .var_app').innerHTML = app ;//+ online;
+ $(".container-fluid .var_app").html(); // Using the jQuery library
+ //if(navigator.onLine==true){ 	 document.getElementById("img").disabled = true;}
 // </script><script>
-function loadFileAsText()
-{
-var fileToLoad = document.getElementById("fileToLoad").files[0];
-var fileReader = new FileReader();
-fileReader.onload = function(fileLoadedEvent) 
-{
-//    var textFromFileLoaded 
-    document.getElementById('ioput').value= fileLoadedEvent.target.result;
-    document.getElementById("inputTextToSave").value = textFromFileLoaded;
-};
-fileReader.readAsText(fileToLoad, "UTF-8");
-} 
+function loadFileAsText(){
+	 var fileToLoad = document.getElementById("fileToLoad").files[0];
+	 var fileReader = new FileReader();
+	 fileReader.onload = function(fileLoadedEvent) {
+		//    var textFromFileLoaded 
+     document.getElementById('ioput').value= fileLoadedEvent.target.result;
+     document.getElementById("inputTextToSave").value = textFromFileLoaded;
+	 };
+	 fileReader.readAsText(fileToLoad, "UTF-8");
+	} 
 function hash(data){
     document.getElementById('ioput').value= CryptoJS.SHA256(data);
 }
