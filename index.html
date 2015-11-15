@@ -48,19 +48,20 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
 	</div>	
  	 <div> 
 		 <input type="file" id="fileToLoad"> <!-- multiple-->
-		 <button onclick="loadFileAsText()">Put</button>
+		 <button onclick="loadFileAsText()">Its</button>
 		<button onclick="init_table(document.getElementById('ioput').value)">View</button>
+		OR
 		<button onclick="hash(document.getElementById('ioput').value)">Mask</button>
 	 </div><div>
-		 <textarea  id="ioput" onclick="this.focus();this.select()" ></textarea>		
+		 <textarea  id="ioput"></textarea>		
 	       </div>
      <div id='table-container'></div>
      <p> 
 		1. Download (to external device and from eg. dropcanvas) your (sensitive) data being encrypted with your public key and then work offline.<br>
 		2. Decrypt it with your exteranl <span class='var_app'></span> and save the decrypted plaintext file as temporary file (on external device).<br>
-		3. "Browse" the temporary file , delete it and "Put" it and then <br>
-		3.1. "View" it (when formed csv) to have it as a table or <br>
-		3.2. "Mask" it to have its SHA-256 as its id.<br>
+		3. "Browse" the temporary file , delete it and click "Its" and then <br>
+		3.1. click "View" it (when formed csv) to have it as a table or <br>
+		3.2. click "Mask" it to have its SHA-256 as its id.<br>
 		3.2.1. Now you can cut and or paste the "Mask"ed over other files to produce your <a href="http://namzezam.wikidot.com/blog:12" >iiaom </a> or any other id  (for having such ids, by being in first column, indexing their reputation earned in your transactions in distributed table "View"ed from csv table being download/uploaded eg. to dropcanvas).<br>
 		3.2.1.1. You make your iiaom by symmetrical encrypting your image, then "Put", "Mask" and cut it, then "Put" and "Mask the image and then paste and "Mask".
 	 </p><p> 	
@@ -129,7 +130,7 @@ function loadFileAsText(){
 	 fileReader.onload = function(fileLoadedEvent) {
 		//    var textFromFileLoaded 
      document.getElementById('ioput').value= fileLoadedEvent.target.result;
-     document.getElementById("inputTextToSave").value = textFromFileLoaded;
+    // document.getElementById("inputTextToSave").value = textFromFileLoaded;
 	 };
 	 fileReader.readAsText(fileToLoad, "UTF-8");
 	} 
