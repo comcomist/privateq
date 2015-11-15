@@ -43,15 +43,13 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
     <script src="dataTables.bootstrap.js"></script>
     <script src='csv_to_html_table.js'></script>
     <div class="container-fluid">
-	<div id='img'> 
-<a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a>
-	</div>	
+		
  	 <div> 
 		 <input type="file" id="fileToLoad"> <!-- multiple-->
-		 <button onclick="loadFileAsText()">Its</button>
-		<button onclick="init_table(document.getElementById('ioput').value)">View</button>
+		 <button onclick="loadFileAsText()">See it</button>
+		<button onclick="init_table(document.getElementById('ioput').value)">As Table</button>
 		OR
-		<button onclick="hash(document.getElementById('ioput').value)">Mask</button>
+		<button onclick="hash(document.getElementById('ioput').value)">As Mask</button>
 	 </div><div>
 		 <textarea  id="ioput"></textarea>		
 	       </div>
@@ -59,9 +57,9 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
      <p> 
 		1. Download (to external device and from eg. dropcanvas) your (sensitive) data being encrypted with your public key and then work offline.<br>
 		2. Decrypt it with your exteranl <span class='var_app'></span> and save the decrypted plaintext file as temporary file (on external device).<br>
-		3. "Browse" the temporary file , delete it and click "Its" and then <br>
-		3.1. click "View" it (when formed csv) to have it as a table or <br>
-		3.2. click "Mask" it to have its SHA-256 as its id.<br>
+		3. "Browse" the temporary file , delete it and click "See it" and then <br>
+		3.1. click "As ‎Table" it (when formed csv) to have it as a table or <br>
+		3.2. click "As Mask" it to have its SHA-256 as its id.<br>
 		3.2.1. Now you can cut and or paste the "Mask"ed over other files to produce your <a href="http://namzezam.wikidot.com/blog:12" >iiaom </a> or any other id  (for having such ids, by being in first column, indexing their reputation earned in your transactions in distributed table "View"ed from csv table being download/uploaded eg. to dropcanvas).<br>
 		3.2.1.1. You make your iiaom by symmetrical encrypting your image, then "Put", "Mask" and cut it, then "Put" and "Mask the image and then paste and "Mask".
 	 </p><p> 	
@@ -73,7 +71,11 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
  	    for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>
  	 </p>
     
-    </div><!-- /.container 
+    </div>
+    <div id='img'> 
+<a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a>
+	</div>
+    <!-- /.container 
 
  
  and name2mask with <a href="http://sourceforge.net/projects/quickhash/">quickhash</a>
