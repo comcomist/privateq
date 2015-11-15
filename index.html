@@ -15,6 +15,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>td:hover {
+          background-color: #ffff99;}
+        }</style>
   </head>
   <body>
     <!-- Bootstrap core JavaScript
@@ -61,7 +64,7 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
 		3.1. click "As ‎Table" it (when formed csv) to have it as a table or <br>
 		3.2. click "As Mask" it to have its SHA-256 as its id.<br>
 		3.2.1. Now you can cut and or paste the "Mask"ed over other files to produce your <a href="http://namzezam.wikidot.com/blog:12" >iiaom </a> or any other id  (for having such ids, by being in first column, indexing their reputation earned in your transactions in distributed table "View"ed from csv table being download/uploaded eg. to dropcanvas).<br>
-		3.2.1.1. You make your iiaom by symmetrical encrypting your image, then "Put", "Mask" and cut it, then "Put" and "Mask the image and then paste and "Mask".
+		3.2.1.1. You make your iiaom by symmetrical encrypting your image, then "Put", "Mask" and cut it, then "See it" and "As Mask the image and then paste and "Mask".
 	 </p><p> 	
 			 
 		PrivateQ is a protocol for Privately querying, while having  media storage secure, when sending to individuals or transmiting to specific group, while<br>
@@ -75,9 +78,11 @@ SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as
     <div id='img'> 
 <a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a>
 	</div>
-    <!-- /.container 
-
- 
+    <!-- /.container
+    how to do {
+    var n= the content in hovered td 
+if(Number.isInteger(n)) then alt + or - keys increse or decred that value.
+}
  and name2mask with <a href="http://sourceforge.net/projects/quickhash/">quickhash</a>
  <div> 
  	<button onclick="search()">Ask</button>
@@ -124,7 +129,10 @@ drag file to text
     
  document.querySelector('.container-fluid .var_app').innerHTML = app ;//+ online;
  $(".container-fluid .var_app").html(); // Using the jQuery library
- //if(navigator.onLine==true){ 	 document.getElementById("img").disabled = true;}
+ if(navigator.onLine==true){ 	
+	 document.getElementById('img').style.display = "block";}else{
+	document.getElementById('img').style.display = "none";	 }
+
 // </script><script>
 function loadFileAsText(){
 	 var fileToLoad = document.getElementById("fileToLoad").files[0];
