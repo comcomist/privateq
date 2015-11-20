@@ -9,164 +9,215 @@
     <title>privateq</title>
     <!-- Bootstrap core CSS   -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="dataTables.bootstrap.css" rel="stylesheet"> 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <style>td:hover {
-          background-color: #ffff99;}
-        }</style>
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet"> 
+    <style>
+  td:hover {          background-color: #ffff99;}}		
+  #progress_bar {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid #000;
+    font-size: 14px;
+    clear: both;
+    opacity: 0;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+  }
+  #progress_bar.loading {
+    opacity: 1.0;
+  }
+  #progress_bar .percent {
+    background-color: #99ccff;
+    height: auto;
+    width: 0;
+  }
+        </style>
   </head>
   <body>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-     
-	
-   
-
-    SHA-2
-
-SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as SHA-1, though it appears to provide much better security.
-    
-<script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
-<script>
-    var hash = CryptoJS.SHA256("Message");
-</script>
--->
 	 <script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
-	 <script src="jquery.1.11.2.min.js"></script>    
-     <script src="bootstrap.min.js"></script>
-     <script src="jquery.csv.min.js"></script>
-   
-    <script src="jquery.dataTables.min.js"></script>    
-    <script src="dataTables.bootstrap.js"></script>
-    <script src='csv_to_html_table.js'></script>
-    <div class="container-fluid">
-		
- 	 <div> 
-		 <input type="file" id="fileToLoad"> <!-- multiple-->
-		 <button onclick="loadFileAsText()">See it</button>
-		<button onclick="init_table(document.getElementById('ioput').value)">As Table</button>
-		OR
-		<button onclick="hash(document.getElementById('ioput').value)">As Mask</button>
-	 </div><div>
-		 <textarea  id="ioput"></textarea>		
-	       </div>
-     <div id='table-container'></div>
-     <p> 
-		1. Download (to external device and from eg. dropcanvas) your (sensitive) data being encrypted with your public key and then work offline.<br>
-		2. Decrypt it with your exteranl <span class='var_app'></span> and save the decrypted plaintext file as temporary file (on external device).<br>
-		3. "Browse" the temporary file , delete it and click "See it" and then <br>
-		3.1. click "As ‎Table" it (when formed csv) to have it as a table or <br>
-		3.2. click "As Mask" it to have its SHA-256 as its id.<br>
-		3.2.1. Now you can cut and or paste the "Mask"ed over other files to produce your <a href="http://namzezam.wikidot.com/blog:12" >iiaom </a> or any other id  (for having such ids, by being in first column, indexing their reputation earned in your transactions in distributed table "View"ed from csv table being download/uploaded eg. to dropcanvas).<br>
-		3.2.1.1. You make your iiaom by symmetrical encrypting your image, then "Put", "Mask" and cut it, then "See it" and "As Mask the image and then paste and "Mask".
-	 </p><p> 	
-			 
-		PrivateQ is a protocol for Privately querying, while having  media storage secure, when sending to individuals or transmiting to specific group, while<br>
- 	    on the server, each fields is encrypted by the pub key of the scope defined by the column, where the scopes are: <br>
- 	     0 of the data of owner of the record, <br>
- 	     1 of data visible to the owner as one of many children of first ancestor etc.<br>
- 	    for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>
- 	 </p>
-    
-    </div>
-    <div id='img'> 
-<a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a>
-	</div>
-    <!-- /.container
-    how to do {
-    var n= the content in hovered td 
-if(Number.isInteger(n)) then alt + or - keys increse or decred that value.
-}
- and name2mask with <a href="http://sourceforge.net/projects/quickhash/">quickhash</a>
- <div> 
- 	<button onclick="search()">Ask</button>
-</div>    
-<input type="file" id="files" name="files[]" multiple />
-<output id="list"></output>
-		
-    <footer class='footer'>      <div class='container-fluid'> </div> </footer>
-
+	 <script src="js/jquery.1.11.2.min.js"></script>    
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.csv.min.js"></script>
+     <script src="js/jquery.dataTables.min.js"></script>    
+     <script src="js/dataTables.bootstrap.js"></script>
+     <div class="container-fluid">
+ 	  <div> 
+		<button onclick="EditContent(window.content)"> Edit </button>
+		<button onclick="init_table(window.content)">Table</button>
+		<button onclick="hash(window.content)">Hname</button>
+		<button onclick="saveTextAsFile(CryptoJS.SHA256(window.hname)+'.type')">Save</button>
+		<a href="help.html" style="font-weight: bold">Help </a>
+	  </div>
+	  <div>
+	    <textarea  id="ioput"></textarea>
+	    <textarea  id="harea"></textarea>
+		<input type="file" id="files" name="file" />
+		<div id="progress_bar">	<div class="percent">0%</div></div>							
+		<button onclick="abortRead();">Cancel</button>
+		<button onclick="clearvar();">Clear</button>
+	  </div>
+		<div id='table-container'></div>
+	 </div>
 <script>
-var Platform =  navigator.platform ;
+	
+ function hash(data){
+	 var h=CryptoJS.SHA256(data);
+	 window.hname+=h;
+	 document.getElementById('harea').value= h;
+	
+	 }
+ function EditContent(data){  document.getElementById('ioput').value=data;}
+ //----------------------ViewTable
+ $(".container-fluid .var_app").html(); // Using the jQuery library 
+ function init_table(data) {// Thanks to Derek Eder under mit: Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  var options={
+   //     csv_path: 'fatty_acid_profiles.csv',
+        element: 'table-container', 
+    //    allow_download: true,
+        csv_options: {separator: ',', delimiter: '"'},
+        datatables_options: {"paging": true}//false}
+      };
+  options = options || {};
+ // var csv_path = options.csv_path || "";
+  var el = options.element || "table-container";
+  var allow_download = options.allow_download || false;
+  var csv_options = options.csv_options || {};
+  var datatables_options = options.datatables_options || {};
 
-document.getElementById("container-fluid").innerHTML = Platform;
-</script>
+  $("#" + el).html("<table class='table table-striped table-condensed' id='my-table'></table>");
 
-http://www.w3schools.com/html/html5_draganddrop.asp
-/home/a/Downloads/jscii-master/
-var buffer=ArrayBuffer(lenght)
-var view   = new Int32Array(buffer);
-from binarry to hex eavry 4 bytes use use var n=bytes
-string +=num.toString(16);
-0000000
-1. no textarea and no use of clipors and no selcet, instead a bootum for pasing the content  to parmeter!!!
-2. from server downloading (to external device) encrypted data by brwoeser  and 
-3.  extarnly: user use data with exteranl (kgpg )app and save it to temparory file (on external device)
-4. open  temp  file make tabe form cvs
-5. extarnly: delete temp
-00000000
----
-name2mask bottom to hash the text using http://sourceforge.net/projects/quickhash/ 
-add bottom?
+  //$.when($.get(csv_path)).then(function(data){
 
-cheack being offline
+      data = data.replace(/[\r|\r\n]/g, "\n");
+      
+      var csv_data = $.csv.toArrays(data, csv_options);
 
-lock the clipord
-drag file to text
-//FileReader.readAsText
--->
-<script>
- var os		=navigator.platform.slice(0, 1),
-     app	= '<a href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
-     if (os=='L') {app	 ='<a href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
-     else if (os=='W'){app='<a href="http://www.gpg4win.org/">gpg4win</a>'; } 
-    
- document.querySelector('.container-fluid .var_app').innerHTML = app ;//+ online;
- $(".container-fluid .var_app").html(); // Using the jQuery library
- if(navigator.onLine==true){ 	
-	 document.getElementById('img').style.display = "block";}else{
-	document.getElementById('img').style.display = "none";	 }
+      var table_head = "<thead><tr>";
 
-// </script><script>
-function loadFileAsText(){
-	 var fileToLoad = document.getElementById("fileToLoad").files[0];
-	 var fileReader = new FileReader();
-	 fileReader.onload = function(fileLoadedEvent) {
-		//    var textFromFileLoaded 
-     document.getElementById('ioput').value= fileLoadedEvent.target.result;
-    // document.getElementById("inputTextToSave").value = textFromFileLoaded;
-	 };
-	 fileReader.readAsText(fileToLoad, "UTF-8");
-	} 
-function hash(data){
-    document.getElementById('ioput').value= CryptoJS.SHA256(data);
+      for (head_id = 0; head_id < csv_data[0].length; head_id++) { 
+        table_head += "<th>" + csv_data[0][head_id] + "</th>";
+      }
+
+      table_head += "</tr></thead>";
+      $('#my-table').append(table_head);
+      $('#my-table').append("<tbody></tbody>");
+
+      for (row_id = 1; row_id < csv_data.length; row_id++) { 
+        var row_html = "<tr>";
+
+          for (col_id = 0; col_id < csv_data[row_id].length; col_id++) { 
+            row_html += "<td>" + csv_data[row_id][col_id] + "</td>";
+          }
+          
+        row_html += "</tr>";
+        $('#my-table tbody').append(row_html);
+      }
+
+      $("#my-table").DataTable(datatables_options);
+	  document.getElementById('ioput').value=null;
+     // if (allow_download) $("#" + el).append("<p><a class='btn btn-info' href='" + csv_path + "'><i class='glyphicon glyphicon-download'></i> Download as CSV</a></p>");
+    //    });
 }
-/////not now
-/*
-  function handleFileSelect(evt) {//http://www.html5rocks.com/en/tutorials/file/dndfiles/
-    var files = evt.target.files; // FileList object
+///
+function clearvar(){ // why it is not worling?
+	  window.content=null;
+    window.hname=null;
+    document.getElementById('ioput').value= null;
+    document.getElementById('harea').value= null;
+	}
+//---------------------------OpenFile 
+  //http://www.html5rocks.com/en/tutorials/file/dndfiles/
+  var reader;
+  var progress = document.querySelector('.percent');
+  function abortRead() {
+    reader.abort();
+  }
 
-    // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, last modified: ',
-                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                  '</li>');
+  function errorHandler(evt) {
+    switch(evt.target.error.code) {
+      case evt.target.error.NOT_FOUND_ERR:
+        alert('File Not Found!');
+        break;
+      case evt.target.error.NOT_READABLE_ERR:
+        alert('File is not readable');
+        break;
+      case evt.target.error.ABORT_ERR:
+        break; // noop
+      default:
+        alert('An error occurred reading this file.');
+    };
+  }
+
+  function updateProgress(evt) {
+    
+    // evt is an ProgressEvent.
+    if (evt.lengthComputable) {
+      var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+      // Increase the progress bar length.
+      if (percentLoaded < 100) {
+        progress.style.width = percentLoaded + '%';
+        progress.textContent = percentLoaded + '%';
+      } //else if (percentLoaded == 100){}
+		
+		  
     }
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+
+  }
+
+  function handleFileSelect(evt) {
+    // Reset progress indicator on new file selection.
+    progress.style.width = '0%';
+    progress.textContent = '0%';
+ 
+    reader = new FileReader();
+    reader.onerror = errorHandler;
+    reader.onprogress = updateProgress;
+    reader.onabort = function(e) {
+      alert('File read cancelled');
+    };
+    reader.onloadstart = function(e) {
+      document.getElementById('progress_bar').className = 'loading';
+    };
+    reader.onload = function(e) {
+		
+		// Ensure that the progress bar displays 100% at the end.
+      progress.style.width = '100%';
+      progress.textContent = '100%';
+      
+       window.content= this.result;
+      setTimeout("document.getElementById('progress_bar').className='';", 2000);
+     
+    }
+    reader.readAsBinaryString(evt.target.files[0]);// Read in the image file as a binary string.
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
-  */
+
+//--------------------------SaveFile
+function saveTextAsFile(fileName){ // saveas http://stackoverflow.com/questions/28263221/save-html-textarea-state
+var textToWrite = document.getElementById('ioput').value;//document.getElementsByTagName('html')[0].innerHTML
+    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileName;
+    downloadLink.innerHTML = "Download File";
+    if (window.webkitURL != null){        // Chrome allows the link to be clicked without actually adding it to the DOM.
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    }    else    {        // Firefox requires the link to be added to the DOM before it can be clicked.
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    }
+
+    downloadLink.click();
+}
+
+function destroyClickedElement(event){
+    document.body.removeChild(event.target);}
+
 </script>
 
  
   </body>
 </html>
+
