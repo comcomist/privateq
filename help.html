@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- License: Humanitarian-Agpl: http://namzezam.wikidot.com/humanitarian-agpl-license -->
+  <head>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+     <!-- Bootstrap core CSS   -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet"> 
+   
+    <!-- Placed at the end of the document so the pages load faster 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+     
+	
+   
+
+    SHA-2
+
+SHA-256 is one of the four variants in the SHA-2 set. It isn't as widely used as SHA-1, though it appears to provide much better security.
+    
+<script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
+<script>
+    var hash = CryptoJS.SHA256("Message");
+</script>
+    <script src='js/csv_to_html_table.js'></script>
+
+-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+	<div class="container-fluid">
+	<!-- <input type="file" id="fileToLoad">  multiple
+		 
+		        document.getElementById('ioput').value=window.content;
+
+		 <button onclick="loadFileAsText()">See it</button>-->
+    <div id='img'> 
+<a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a>
+	</div>
+		 
+     <p> 
+		1. (to external device and from eg. dropcanvas) Download your (sensitive) data being encrypted with your public key and then work offline.<br>
+		2. Decrypt it with your exteranl <span class='var_app'></span> and save the decrypted plaintext file as temporary file (on external device).<br>
+		3. "Browse" the temporary file , delete it and click "See it" and then <br>
+		3.1. click "As ‎Table" it (when formed csv) to have it as a table or <br>
+		3.2. click "As Mask" it to have its SHA-256 as its id.<br>
+		3.2.1. Now you can cut and or paste the "Mask"ed over other files to produce your <a href="http://namzezam.wikidot.com/blog:12" >iiaom </a> or any other id  (for having such ids, by being in first column, indexing their reputation earned in your transactions in distributed table "View"ed from csv table being download/uploaded eg. to dropcanvas).<br>
+		3.2.1.1. You make your iiaom by symmetrical encrypting your image, then "See it"+"As Mask" and cut it, then "See it" +"As Mask" for the image and then paste and "Mask".
+	 </p><p> 	
+			 
+		PrivateQ is a protocol for Privately querying, while having  media storage secure, when sending to individuals or transmiting to specific group, while<br>
+ 	    on the server, each fields is encrypted by the pub key of the scope defined by the column, where the scopes are: <br>
+ 	     0 of the data of owner of the record, <br>
+ 	     1 of data visible to the owner as one of many children of first ancestor etc.<br>
+ 	    for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>
+ 	 </p>
+ ----use
+ bottom + Ttextarea to table	 (map dircotry to table as its index is filename, its field as file's contecnt and its coulumn name as extantion of filename)
+ bottom + Htextarea += hash(file)  
+ bottom savedAs file named as hash(Htextarea) 
+ to prodcue distributed directory
+  iiaom.enc of iiaom nameed for of encrypted imag , first hashed the mage than += the encrypted then savedas.
+ iiaom.rep of iiaom named for meta = pub_key, group_signed, reputation={sign_counter,unique_sig_counter,max_uniq,min_uniq,evr_uniq}
+
+private directory of iiaom.sig backupreputation =all signed iiaom (by the auteticatingor)
+ ----	 distribution by bittorent? https://webtorrent.io/
+  distributed:  iiaom=>{
+sym_encr_pic,
+pub_key,
+group_signed,
+reputation={sign_counter,unique_sig_counter,max_uniq,min_uniq,evr_uniq}
+}
+privtly: to backup the reputation , the peer has 
+ all signed iiaom (by the auteticatingor),
+ so  that on regulara base some withneses would cheack and sign upon 
+ the intergery of the reputation 
+  
+saveas iiaom the hash(textarea( hash(LOad(img))2textarea+ load(enc(img))2textarea 
+which is made from extarnal encriptying))   
+</div>
+    <!-- /.container
+    how to do {
+    var n= the content in hovered td 
+if(Number.isInteger(n)) then alt + or - keys increse or decred that value.
+}
+ and name2mask with <a href="http://sourceforge.net/projects/quickhash/">quickhash</a>
+ <div> 
+ 	<button onclick="search()">Ask</button>
+</div>    
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+		
+    <footer class='footer'>      <div class='container-fluid'> </div> </footer>
+
+<script>
+var Platform =  navigator.platform ;
+
+document.getElementById("container-fluid").innerHTML = Platform;
+</script>
+
+http://www.w3schools.com/html/html5_draganddrop.asp
+/home/a/Downloads/jscii-master/
+var buffer=ArrayBuffer(lenght)
+var view   = new Int32Array(buffer);
+from binarry to hex eavry 4 bytes use use var n=bytes
+string +=num.toString(16);
+0000000
+1. no textarea and no use of clipors and no selcet, instead a bootum for pasing the content  to parmeter!!!
+2. from server downloading (to external device) encrypted data by brwoeser  and 
+3.  extarnly: user use data with exteranl (kgpg )app and save it to temparory file (on external device)
+4. open  temp  file make tabe form cvs
+5. extarnly: delete temp
+00000000
+---
+name2mask bottom to hash the text using http://sourceforge.net/projects/quickhash/ 
+add bottom?
+
+cheack being offline
+
+lock the clipord
+drag file to text
+//FileReader.readAsText
+
+....????
+
+ 
+gsignute send to grroup  as tranaction to be  loged  and groupt return  new repution signed signed by group and resulted from the other peer signature.
+on non trust event all groups memebers are otfied
+inteaded of group it can be return on consnuses sucha s by blobkhin
+.....???
+-->
+<script>
+ var os		=navigator.platform.slice(0, 1),
+     app	= '<a href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
+     if (os=='L') {app	 ='<a href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
+     else if (os=='W'){app='<a href="http://www.gpg4win.org/">gpg4win</a>'; }     
+ document.querySelector('.container-fluid .var_app').innerHTML = app ;//+ online;
+ if(navigator.onLine==true){document.getElementById('img').style.display = "block";}
+ else{	document.getElementById('img').style.display = "none";	 }
+/*
+function loadFileAsText(){
+	 var fileToLoad = document.getElementById("fileToLoadCryptoJS.SHA256(data)").files[0];
+	 var fileReader = new FileReader();
+	 fileReader.onload = function(fileLoadedEvent) {
+		//    var textFromFileLoaded 
+     document.getElementById('ioput').value= fileLoadedEvent.target.result;
+    // document.getElementById("inputTextToSave").value = textFromFileLoaded;
+	 }; // readAsArrayBuffer
+	 fileReader.readAsText(fileToLoad, "UTF-8");
+	} 
+	*/
+
+/////not now
+/*
+  function handleFileSelect(evt) {//http://www.html5rocks.com/en/tutorials/file/dndfiles/
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '</li>');
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  */
+</script>		 
+</body>
+</html>
