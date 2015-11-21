@@ -10,7 +10,7 @@
     <!-- Bootstrap core CSS   -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap.css" rel="stylesheet"> 
-    <style>
+    <style type="text/css">
   td:hover {          background-color: #ffff99;}}		
   #progress_bar {
     margin: 10px 0;
@@ -23,6 +23,9 @@
     -o-transition: opacity 1s linear;
     -webkit-transition: opacity 1s linear;
   }
+  
+  .floatleft  {    float: left; }
+  .clearleft {clear: left;}
   #progress_bar.loading {
     opacity: 1.0;
   }
@@ -41,35 +44,59 @@
      <script src="js/jquery.dataTables.min.js"></script>    
      <script src="js/dataTables.bootstrap.js"></script>
      <div class="container-fluid">
- 	  <div> 
-		<button onclick="EditContent(window.content)"> Edit </button>
-		<button onclick="init_table(window.content)">Table</button>
+ 	  <div>
+		 <input type="file" id="files" name="file" />
+		 <div class="floatleft"> <textarea  id="ioput"></textarea></div>
+		 <input type="checkbox" id="AsText" >Text<br>
+		 <input type="checkbox" id="ToHash" onclick="hash(window.content)"  checked>Hname<br>
+		 <button onclick="init_table(window.content)">Table</button> 		 
+		 <button onclick="EditContent(window.content)">Edit</button>   
+		 <button onclick="savefile(CryptoJS.SHA256(window.hname)+'.type')">Save</button>
+		 <button onclick="clearvar();">Clear</button>
+		 <a href="help.html" style="font-weight: bold">Help </a>
+		 <div class="clearleft"></div>
+	  </div> 
+	<!--     
 		<button onclick="hash(window.content)">Hname</button>
-		<button onclick="saveTextAsFile(CryptoJS.SHA256(window.hname)+'.type')">Save</button>
-		<a href="help.html" style="font-weight: bold">Help </a>
-	  </div>
+		<button onclick="init_table(window.content)">Table</button>		
+	-->	
+
+		
+	  
 	  <div>
-	    <textarea  id="ioput"></textarea>
-	    <textarea  id="harea"></textarea>
-		<input type="file" id="files" name="file" />
+		 		<button onclick="abortRead();">Cancel</button>
 		<div id="progress_bar">	<div class="percent">0%</div></div>							
-		<button onclick="abortRead();">Cancel</button>
-		<button onclick="clearvar();">Clear</button>
 	  </div>
 		<div id='table-container'></div>
 	 </div>
 <script>
 	
  function hash(data){
-	 var h=CryptoJS.SHA256(data);
-	 window.hname+=h;
-	 document.getElementById('harea').value= h;
+	 
+	     if ( document.getElementById("AsText").checked){
+			 var h=CryptoJS.SHA256(data);	 
+			 window.hname+=h;
+			 	 document.getElementById('ioput').value= h;
+			 }
+
 	
 	 }
- function EditContent(data){  document.getElementById('ioput').value=data;}
+ function EditContent(data){  
+//	 var buffer = new ArrayBuffer(12);
+//var dataView = new DataView(buffer);
+//var str =ab2str(data); 
+//new Uint8Array(data);
+//var str = data.toString();
+//String.fromCharCode.apply(null, new Uint16Array(data));
+
+
+	 document.getElementById('ioput').value=data;//str;//window.content;//data;
+	 }
+
  //----------------------ViewTable
  $(".container-fluid .var_app").html(); // Using the jQuery library 
  function init_table(data) {// Thanks to Derek Eder under mit: Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	// data=ab2str(data);
   var options={
    //     csv_path: 'fatty_acid_profiles.csv',
         element: 'table-container', 
@@ -121,9 +148,9 @@
 ///
 function clearvar(){ // why it is not worling?
 	  window.content=null;
+	 // window.Scontent="";
     window.hname=null;
-    document.getElementById('ioput').value= null;
-    document.getElementById('harea').value= null;
+    document.getElementById('ioput').value= "";   // document.getElementById('harea').value= null;
 	}
 //---------------------------OpenFile 
   //http://www.html5rocks.com/en/tutorials/file/dndfiles/
@@ -158,7 +185,6 @@ function clearvar(){ // why it is not worling?
         progress.style.width = percentLoaded + '%';
         progress.textContent = percentLoaded + '%';
       } //else if (percentLoaded == 100){}
-		
 		  
     }
 
@@ -180,36 +206,36 @@ function clearvar(){ // why it is not worling?
     };
     reader.onload = function(e) {
 		
-		// Ensure that the progress bar displays 100% at the end.
+	  window.content	   = this.result;
+	  		// Ensure that the progress bar displays 100% at the end.
       progress.style.width = '100%';
-      progress.textContent = '100%';
-      
-       window.content= this.result;
+      progress.textContent = '100%';          
       setTimeout("document.getElementById('progress_bar').className='';", 2000);
      
     }
-    reader.readAsBinaryString(evt.target.files[0]);// Read in the image file as a binary string.
+    if ( document.getElementById("AsText").checked){
+           reader.readAsBinaryString(evt.target.files[0]);// Read in the image file as a binary string.
+    }else{ reader.readAsArrayBuffer(evt.target.files[0]);}// Read in the image file as a binary string.
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
-//--------------------------SaveFile
-function saveTextAsFile(fileName){ // saveas http://stackoverflow.com/questions/28263221/save-html-textarea-state
-var textToWrite = document.getElementById('ioput').value;//document.getElementsByTagName('html')[0].innerHTML
-    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-    var downloadLink = document.createElement("a");
-    downloadLink.download = fileName;
-    downloadLink.innerHTML = "Download File";
+//--------------------------savefile
+function savefile(fileName){ // saveas http://stackoverflow.com/questions/28263221/save-html-textarea-state
+//var ToWrite =window.content ; //document.getElementById('ioput').value;
+    var blobas = new Blob([window.content]);//[ToWrite]);//, {type:'text/plain'});
+    var saveas = document.createElement("a");
+    saveas.download = fileName;
+    saveas.innerHTML = "Download File";
     if (window.webkitURL != null){        // Chrome allows the link to be clicked without actually adding it to the DOM.
-        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+        saveas.href = window.webkitURL.createObjectURL(blobas);
     }    else    {        // Firefox requires the link to be added to the DOM before it can be clicked.
-        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-        downloadLink.onclick = destroyClickedElement;
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
+        saveas.href = window.URL.createObjectURL(blobas);
+        saveas.onclick = destroyClickedElement;
+        saveas.style.display = "none";
+        document.body.appendChild(saveas);
     }
 
-    downloadLink.click();
+    saveas.click();
 }
 
 function destroyClickedElement(event){
