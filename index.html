@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>privateq</title>
-    <!-- Bootstrap core CSS   -->
+    <!-- Bootstrap core CSS   --> 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/dataTables.bootstrap.css" rel="stylesheet"> 
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+    
     <style type="text/css">
   td:hover {          background-color: #ffff99;}}		
   #progress_bar {
@@ -45,15 +46,19 @@
      <script src="js/dataTables.bootstrap.js"></script>
      <div class="container-fluid">
  	  <div>
-		 <input type="file" id="files" name="file" />
-		 <div class="floatleft"> <textarea  id="ioput"></textarea></div>
+		  <div class="floatleft"> 
+		<button onclick="clearvar();">Clear</button>	  
+		 <button onclick="savefile(CryptoJS.SHA256(window.hname)+'.type')">Save</button>	
+		 </div>	  
+		 <input type="file" id="files" name="file" /><div class="clearleft"></div>
+		 <div class="floatleft">  <textarea  id="ioput"></textarea>
+		 </div>
 		 <input type="checkbox" id="AsText" >Text<br>
 		 <input type="checkbox" id="ToHash" onclick="hash(window.content)"  checked>Hname<br>
 		 <button onclick="init_table(window.content)">Table</button> 		 
 		 <button onclick="EditContent(window.content)">Edit</button>   
-		 <button onclick="savefile(CryptoJS.SHA256(window.hname)+'.type')">Save</button>
-		 <button onclick="clearvar();">Clear</button>
 		 <a href="help.html" style="font-weight: bold">Help </a>
+		 <a href="http://namzezam.wikidot.com/humanitarian-agpl-license" style="font-weight: bold" >License</a>  
 		 <div class="clearleft"></div>
 	  </div> 
 	<!--     
@@ -149,8 +154,9 @@
 function clearvar(){ // why it is not worling?
 	  window.content=null;
 	 // window.Scontent="";
+	 init_table(window.content);
     window.hname=null;
-    document.getElementById('ioput').value= "";   // document.getElementById('harea').value= null;
+    document.getElementById('ioput').value= null;   // document.getElementById('harea').value= null;
 	}
 //---------------------------OpenFile 
   //http://www.html5rocks.com/en/tutorials/file/dndfiles/
