@@ -37,7 +37,7 @@
   }
         </style>
   </head>
-  <body>
+  <body onload="Help()"> 
 	 <script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
 	 <script src="js/jquery.1.11.2.min.js"></script>    
      <script src="js/bootstrap.min.js"></script>
@@ -47,42 +47,98 @@
      <div class="container-fluid">
  	  <div>
 		  <div class="floatleft"> 
-		<button onclick="clearvar();">Clear</button>	  
-		 <button onclick="savefile(CryptoJS.SHA256(window.hname)+'.type')">Save</button>	
+
+		 <button onclick="savefile(SHA256in32(window.hname)+'.type')">SaveAs...</button>	
 		 </div>	  
 		 <input type="file" id="files" name="file" /><div class="clearleft"></div>
-		 <div class="floatleft">  <textarea  id="ioput"></textarea>
+		 <div class="floatleft"> 		
+			 
+			 <textarea  id="ioput"></textarea>
 		 </div>
-		 <input type="checkbox" id="AsText" >Text<br>
-		 <input type="checkbox" id="ToHash" onclick="hash(window.content)"  checked>Hname<br>
+		 <input type="checkbox" id="Help"  onclick="Help()" checked>Help<br>		  		 
+		 <input type="checkbox" id="AsText" >IsText<br>
+		 <input type="checkbox" id="ToHash" onclick="hash(window.content)"  checked>ToHname<br>
 		 <button onclick="init_table(window.content)">Table</button> 		 
 		 <button onclick="EditContent(window.content)">Edit</button>   
-		 <a href="help.html" style="font-weight: bold">Help </a>
-		 <a href="http://namzezam.wikidot.com/humanitarian-agpl-license" style="font-weight: bold" >License</a>  
 		 <div class="clearleft"></div>
 	  </div> 
 	<!--     
 		<button onclick="hash(window.content)">Hname</button>
-		<button onclick="init_table(window.content)">Table</button>		
+		<button onclick="init_table(window.content)">Table</button>	
+		 <a href="help.html" style="font-weight: bold">Help </a>	
 	-->	
 
-		
 	  
 	  <div>
-		 		<button onclick="abortRead();">Cancel</button>
-		<div id="progress_bar">	<div class="percent">0%</div></div>							
+		<span class='wizardElement'></span>   
+	 	<button  onclick="clearvar();">Clear</button>
+ 		<button onclick="abortRead();">Cancel</button>		
+		<div id="progress_bar">	<div class="percent">0%</div></div>	
+ <a href="http://namzezam.wikidot.com/humanitarian-agpl-license" style="font-weight: bold" >Under Humanitarian Agpl License</a> 
+
 	  </div>
+	  
+	   
 		<div id='table-container'></div>
 	 </div>
 <script>
+
+ 
+function Help(){
+var os		=navigator.platform.slice(0, 1),
+     encApp	= '<a href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
+     if (os=='L') {encApp	 ='<a href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
+     else if (os=='W'){encApp='<a href="http://www.gpg4win.org/">gpg4win</a>'; }     
+     
+        if ( document.getElementById("Help").checked)        {
+document.querySelector('.container-fluid .wizardElement').innerHTML  = 
+'<p> To genreate your <a href="http://namzezam.wikidot.com/blog:12" style="font-weight: bold" >iiaom</a>: <br> 1. use '+ encApp + ' to encrypt your image and turn off IsText and on ToHname. <br>  2. browse and open the image file. <br>  3. browse and open the encrypted file. <br> 4. saveas in type iiaom. </p> ';
+//	document.getElementById('wizardElement').style.display = "block";
+	//? https://github.com/rstaib/jquery-steps
+	// to add while genereting iiaom  a wizardElement visible by giiaom in the prosses producing this stepps
+//	' 1. encrypt the image <br>  2. browse and open the image file <br>  3. browse and open encrypted file <br> 4. .saveas in type iiaom <br> '
+   } else
+   {
+			document.querySelector('.container-fluid .wizardElement').innerHTML  = '';
+			} 
+        
+	}
 	
+	
+ 
+function display_c(){ var refresh=300; // Refresh rate in milli seconds
+	mytime=setTimeout('display_ct()',refresh); // when .. <body onload="display_ct()">
+}
+
+function display_ct() {
+	//var strcount;
+	var x = new Date();
+	document.getElementById('wizardElement').innerHTML = x.getUTCSeconds()	;
+	tt=display_c();
+}
+function base16to32of64(hh){
+	return 	 parseInt(hh.slice(0,8),16).toString(32).toUpperCase()+
+			 parseInt(hh.slice(8,16),16).toString(32).toUpperCase()+
+ 			 parseInt(hh.slice(16,24),16).toString(32).toUpperCase()+ 			 
+			 parseInt(hh.slice(24,32),16).toString(32).toUpperCase()+
+			 parseInt(hh.slice(32,40),16).toString(32).toUpperCase()+
+			 parseInt(hh.slice(40,48),16).toString(32).toUpperCase()+
+			 parseInt(hh.slice(48,56),16).toString(32).toUpperCase()+			 			 
+ 			 parseInt(hh.slice(56,64),16).toString(32).toUpperCase() ;	
+	}
+	
+	function SHA256in32(data){
+return	base16to32of64(CryptoJS.SHA256(data).toString());
+}
  function hash(data){
-	 
-	     if ( document.getElementById("AsText").checked){
-			 var h=CryptoJS.SHA256(data);	 
+	     if ( document.getElementById("ToHash").checked){
+			var //hh=CryptoJS.SHA256(data).toString();
+			h=SHA256in32(data);
+			//base16to32of64(CryptoJS.SHA256(data).toString());// 7/8 bases : hh in  16 -> h in 32
+		 
 			 window.hname+=h;
-			 	 document.getElementById('ioput').value= h;
-			 }
+			// document.getElementById('ioput').value= h;//h;//str.toUpperCase();
+	 }
 
 	
 	 }
@@ -99,7 +155,7 @@
 	 }
 
  //----------------------ViewTable
- $(".container-fluid .var_app").html(); // Using the jQuery library 
+// $(".container-fluid .var_app").html(); // Using the jQuery library 
  function init_table(data) {// Thanks to Derek Eder under mit: Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	// data=ab2str(data);
   var options={
@@ -154,10 +210,10 @@
 function clearvar(){ // why it is not worling?
 	  window.content=null;
 	 // window.Scontent="";
-	 init_table(window.content);
+	 
     window.hname=null;
-    document.getElementById('ioput').value= null;   // document.getElementById('harea').value= null;
-	}
+    document.getElementById('ioput').value= "";//null;   // document.getElementById('harea').value= null;
+	init_table(window.content);}
 //---------------------------OpenFile 
   //http://www.html5rocks.com/en/tutorials/file/dndfiles/
   var reader;
@@ -213,6 +269,7 @@ function clearvar(){ // why it is not worling?
     reader.onload = function(e) {
 		
 	  window.content	   = this.result;
+	  hash(window.content);
 	  		// Ensure that the progress bar displays 100% at the end.
       progress.style.width = '100%';
       progress.textContent = '100%';          
