@@ -85,14 +85,22 @@
 
  
 function Help(){
+	
 var os		=navigator.platform.slice(0, 1),
      encApp	= '<a href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
      if (os=='L') {encApp	 ='<a href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
      else if (os=='W'){encApp='<a href="http://www.gpg4win.org/">gpg4win</a>'; }     
-     
+var Help=
+'<p> ‏Your <a href="http://namzezam.wikidot.com/blog:12" style="font-weight: bold" >iiaom</a> file can be used as your peer to peer Id card, while its file name as your id \
+       for your communication (chat/email/webrtc), transactions or your name in social networks, as well as a table-key for your private data. To generate iiaom : <br>\
+ 1. use '+ encApp + ' to encrypt your image and turn off IsText and on ToHname. <br>\
+ 2. browse and open the image file. <br>\
+ 3. browse and open the encrypted file. <br>\
+ 4. saveas in type iiaom. </p> ';
+// see also https://www.gnupg.org/related_software/swlist.html     
+// https://gpgtools.org/
         if ( document.getElementById("Help").checked)        {
-document.querySelector('.container-fluid .wizardElement').innerHTML  = 
-'<p> To genreate your <a href="http://namzezam.wikidot.com/blog:12" style="font-weight: bold" >iiaom</a>: <br> 1. use '+ encApp + ' to encrypt your image and turn off IsText and on ToHname. <br>  2. browse and open the image file. <br>  3. browse and open the encrypted file. <br> 4. saveas in type iiaom. </p> ';
+document.querySelector('.container-fluid .wizardElement').innerHTML  = Help;
 //	document.getElementById('wizardElement').style.display = "block";
 	//? https://github.com/rstaib/jquery-steps
 	// to add while genereting iiaom  a wizardElement visible by giiaom in the prosses producing this stepps
