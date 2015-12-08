@@ -93,8 +93,8 @@ var os		=navigator.platform.slice(0, 1),
      encApp += ' or other <a href="https://www.gnupg.org/related_software/frontends.html">gpg Frontends</a>';  
 var Help=
 '<p> <a href="https://github.com/comcomist/privateq/archive/master.zip">Download</a> this app for offline use on your device.<br>\
- With "Is text" on, click "As Table" after browsing a csv file to get it as table, or click "To Edit".<br>\
- To generate iiaom (while working offline, unticked  IsText and ticked ToHname): <br>\
+ With "Is text" ticked, click "As Table" after browsing a csv file to get it as table, or click "To Edit".<br>\
+ <div style="float:left; width:50%;">To generate iiaom (while working offline, unticked  IsText and ticked ToHname): <br>\
  1. compress by (creating archive .zip or .7z)  with password ("other" options) to encrypt your image. <br>\
  2. browse and open the image file. <br>\
  3. browse and open the encrypted file. <br>\
@@ -104,13 +104,13 @@ var Help=
  Your reputation number is calculated in base 32 as contacts*1024+1023*(contacts/signatures).<br>\
  In another file: iiaom-file-name.pub, the reputation number is kept togather with your pubkey and the signatures of your trustee you show.<br>\
  For sorting by reputation use addtional empty iiaom-file-name.reputation</p> \
- <p>Use '+ encApp + ' for your privateQ. <br>\
+ </div><div style="float:left; width:50%;"><p>Use '+ encApp + ' for your privateQ. <br>\
  PrivateQ is a protocol for Privately querying, while having  media storage secure, when sending to individuals or transmiting to specific group, while<br>\
  	    on the server, each fields is encrypted by the pub key of the scope defined by the column, where the scopes are: <br>\
  	     0 of the data of owner of the record, <br>\
  	     1 of data visible to the owner as one of many children of first ancestor etc.<br>\
  	    for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>\
- 	 </p>\
+ 	 </p></div>\
  <div> <a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a></div>';
 // see also https://www.gnupg.org/related_software/swlist.html     
 // https://gpgtools.org/
