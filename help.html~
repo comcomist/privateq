@@ -24,15 +24,15 @@
 function Help(){
 	
 var os		=navigator.platform.slice(0, 1),
-     encApp	= '<a target="_blank" href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
-     if (os=='L') {encApp	 ='<a target="_blank" href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
-     else if (os=='W'){encApp='<a target="_blank" href="http://www.gpg4win.org/">gpg4win</a>'; }   
-     encApp += ' or other <a target="_blank" href="https://www.gnupg.org/related_software/frontends.html">gpg Frontends</a>';  
+     encApp	= '<a href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
+     if (os=='L') {encApp	 ='<a href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
+     else if (os=='W'){encApp='<a href="http://www.gpg4win.org/">gpg4win</a>'; }   
+     encApp += ' or other <a href="https://www.gnupg.org/related_software/frontends.html">gpg Frontends</a>';  
 var Help=
-'<p> <a target="_blank" href="https://github.com/comcomist/privateq/archive/master.zip">Download</a> this app for offline use on your device.<br>\
+'<p> <a href="https://github.com/comcomist/privateq/archive/master.zip">Download</a> this app for offline use on your device.<br>\
  Generate iiaom only while working offline, when ToHname is ticked and IsText is unticked.<br>\
  And when "Is text" is ticked, click "As Table" after browsing a csv file, to get it as table, or click "To Edit" to be saved as something other.<br>\
- <div style="float:left; width:50%;border-style: groove; padding: 10px;"> <b>Generating <a target="_blank" href="http://namzezam.wikidot.com/blog:12" style="font-weight: bold" >iiaom</a>:</b> <br>\
+ <div style="float:left; width:50%;border-style: groove; padding: 10px;"> <b>Generating <a href="http://namzezam.wikidot.com/blog:12" style="font-weight: bold" >iiaom</a>:</b> <br>\
  <b>1.</b> compress by (creating archive .zip or .7z)  with password ("other" options) to encrypt your image. <br>\
  <b>2.</b> browse and open the image file. <br>\
  <b>3.</b> browse and open the encrypted file. <br>\
@@ -54,13 +54,13 @@ var Help=
  	     <b>0</b> of the data of owner of the record, <br>\
  	     <b>1</b> of data visible to the owner as one of many children of first ancestor etc.<br>\
  	    for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>\
- 	 </p><a target="_blank" href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a></div>\
+ 	 </p><a href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a></div>\
   <div class="clearleft"></div>\
   <div style="border-style: groove; padding: 10px;">\
   <p> <b>Use cases:</b><br>\
   Your iiaom can be used in combination with Tel number, email, address, paypal address, web address,\
      wallet-id etc, while using <i>privateq via mailing list distribution </i>.<br> \
-Example: <a target="_blank" href="http://communal-coin.wikidot.com/" style="font-weight: bold" >Rcoin</a> in self organized and decentralized accessing by <i>sellers in multiple currencies price</i> and/or decentralized routing by <i>exchangers in p2p exchangers points</i>.\
+Example: <a href="http://communal-coin.wikidot.com/" style="font-weight: bold" >Rcoin</a> in self organized and decentralized accessing by <i>sellers in multiple currencies price</i> and/or decentralized routing by <i>exchangers in p2p exchangers points</i>.\
   Use it as multiple currencies price is e.g. of 3 values like fiat-currencies-central-bank-money\
        (eg. euro, dollar or yuan), Cryptocurrency (eg. bitcoin ,peercoin, faircoin)\
         , and LETS (eg.tp, rcoin, ces), where sellers can act also as as exchangers (to reduce middle man).</p>\

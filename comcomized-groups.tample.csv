@@ -1,0 +1,33 @@
+field, meaning
+(key)id =>,"
+	// in users or groups the $n/2 of the id of the holder $n,
+	// (even as $n=group_id*2, or odd as #n=user_id*2+1),
+	// but without .percentage notating the non_peer holding percentage).
+	//"
+visibility-scope=>," // for other groups (checked against (what?all the) Upwards 
+	// groups of the viewing user).
+	//"
+.name-type=>,"
+	// unchangeable name, as it is given by its creator,
+	// when it is comcom (having even id), it is followed by dot and by $type.$born,
+	// where $type= $d.$is_d_static.$authority.$is_open.$proportionality,
+	// while using y or n for $is_d_static or $is_open and
+	// as the $d is of that in its formation
+	// where $born = the time of creating the record
+	// for the comcom(important when d is not static).
+	//"
+.c=>,"	// = number of peers in the group.
+	//"
+.v=>,"	// = the value held by each peer.
+	//"
+.d=>,"	// = the ratio of the comcom held by all peers.
+	//"
+.m=>,"	// = the value of the comcom (hence $v=$m*$peer_power, as peer_power = $d/$c=$v/$m).
+	//"
+.steepness=>," // = ($V-$oldV)*($c/$oldV), where |$steepness|<= $proportionality (default=1) ,
+	// where $oldV is the last one or average of some last occurrences.
+	//"
+.constancy=>,"	//set only in creation, 
+	//The agreement, or the qualified majority required to change it, is unchangeable
+	// 1 if the agreement is unchangeable otherwise 
+	// the percentage of the majority biger than 0.5.which is required for to change it."

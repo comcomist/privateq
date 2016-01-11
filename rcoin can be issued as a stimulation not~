@@ -1,0 +1,36 @@
+Rcoin can be issued by specific community as its members' a stimulation-expiring-note to be traded for products, services or other notes, where its trader can also be its exchanger (to reduce middleman) and, due to its expiration, its regularly and in steady rate lost of value is (re)distributed equally between the members of that simulated community. 
+	Such stimulation note can be seen like a zero coupon, undated, expiring and tradable security added with some social aspects of members equality.
+	To make more intuitive and transparent the impact of exchange from one note to any other, we use p (as in perception) and r (as in rate) of one versus other (in a specific aspect), such that 
+	if (r<1) p(r) = r - 1, otherwise p(r)= 1 - 1/r, where 
+	r > 0,
+	-1 < p(r) < 1,
+	P(r) = p(r) + 1, where
+	aspects of such currencies or notes can be
+	 capitalization market, gradient, price, (rcoin) value, age etc and
+	in notation: S(0)=p(r),,p(r)s(1),p(r),,p(r),s(2),,where 
+		S(n) is the symbol (such as $) n of a note or currency, 
+		or in table (of which z represents time) sorted by both 
+		first column(market capitalization) and then row(gradient) , where 
+		all the csv before s(n) are parsed to lines, between 0 and 2, around it.
+
+localizion: federation nation city neighbourhood etc
+association: by available transaction between  individuals creating their communities 
+
+===========
+from the  
+s in table is sroundes with 4 line 
+--------------------------------
+nd ..
+
+distraction, age value
+
+
+the presenting a price: price coin_name= P(r)coin_name,,,,
+and 
+
+Example:
+
+23eu = 1tp,1.5rcoin 
+
+means the price is 23eu. but also the other currencies, in their preceding relative rates (in perception), are respected .
+

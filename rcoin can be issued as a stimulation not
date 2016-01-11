@@ -1,0 +1,47 @@
+Rcoin can be issued by specific community as its members' stimulation-expiring-note to be traded for products, services or other notes, as its value regularly and in steady rate is lost until its expiration date, but that lost is (re)distributed equally between the members of the community. 
+  Such stimulation note can be seen like a zero coupon, undated, expiring and tradable security added with some social aspects of members equality, where 
+  Traders for such coin/note can also be its exchangers to reduce the middleman.
+  Its Attributes can be capitalization market, gradient, price, (rcoin) value, age etc. 
+  Its Localisation are federation, nation, city, district neighbourhood etc.
+  Its Association are  between individuals by their transactions, while creating their communities across locations. 
+
+For making more eassy, intuitive and transparent the assessment of exchanging from one note to any other, use Perspective per set of attributes, such that: 
+  [Aspect] Use (confined) Aspect 'a' of the relation 'r' held in one's view to another such that: 
+	if (r<1) a(r) = r - 1, otherwise a(r) = 1 - 1/r, 
+	where r > 0, 	-1 < a(r) < 1 and	A(r) = a(r) + 1. 
+  [Perspective] For representing a record of some relations to the one, per each other, use Perspective of one to another, such that each aspect is put on different rib of (same angle and rib) polygon around the symbol of the other.
+  [Folding] To represent the table (of which attributes are aspects of the others to that one) put the perspectives on a vertical line.
+  [Historic] To represent the changes of the record put the symbol on y and the polygon at each point a long the time on x.
+  [Localisation] To represent the database (of tables belonging to such records), bold the current perspective on the left vertical and add the new (sub) vertical on the right.
+
+///
+
+
+	 
+	 and
+	such that in notation: S(0)=p(r),,p(r)s(1),p(r),,p(r),s(2),,the 
+		S(n) is the symbol (such as $) n of a note or currency, 
+		or in table (of which z represents time) sorted by both 
+		first column(market capitalization) and then row(gradient) , where 
+		all the csv before s(n) are parsed to lines, between 0 and 2, around it.
+
+localisation: federation nation city neighbourhood etc
+association: by available transaction between  individuals creating their communities 
+===========
+from the  
+s in table is sroundes with 4 line 
+--------------------------------
+nd ..
+
+distraction, age value
+
+
+the presenting a price: price coin_name= P(r)coin_name,,,,
+and 
+
+Example:
+
+23eu = 1tp,1.5rcoin 
+
+means the price is 23eu. but also the other currencies, in their preceding relative rates (in perception), are respected .
+

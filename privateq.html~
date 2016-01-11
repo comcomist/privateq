@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- License: Humanitarian-Agpl: http://namzezam.wikidot.com/humanitarian-agpl-license -->
+  <head>  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <!-- Bootstrap core CSS   --> 
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="css/privateq.css" rel="stylesheet">
+    <style>  .floatleft {float: left; } .clearleft {clear: left;}</style>
+   <script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
+     <script src="js/jquery.1.11.2.min.js"></script>    
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.csv.min.js"></script>
+     <script src="js/jquery.dataTables.min.js"></script>    
+     <script src="js/dataTables.bootstrap.js"></script> 
+  
+</head>
+  <body> 
+<div class="container-fluid">
+ 	  <div>
+		  <div class="floatleft"> 
+
+		 <button onclick="savefile(SHA256in32(window.hname)+'.type')">SaveAs...</button>	
+		 </div>	  
+		 <input type="file" id="files" name="file" /><div class="clearleft"></div>
+		 <div class="floatleft"> 		
+			 
+			 <textarea  id="ioput"></textarea>
+		 </div>
+				  		 
+		 <input type="checkbox" id="AsText" >IsText<br>
+		 <input type="checkbox" id="ToHash" onclick="hash(window.content)"  checked>ToHname<br>
+		 <button onclick="init_table(window.content)">As Table</button> 		 
+		 <button onclick="EditContent(window.content)">To Edit</button>   
+		 <div class="clearleft">
+		  <a href="http://namzezam.wikidot.com/humanitarian-agpl-license" style="font-weight: bold" >Under Humanitarian Agpl License</a></div> 
+	  </div> 
+	<!--     
+		<button onclick="hash(window.content)">Hname</button>
+		<button onclick="init_table(window.content)">Table</button>	
+		 <a href="help.html" style="font-weight: bold">Help </a>	
+	-->	
+
+	  
+	  <div>
+		
+	 	<button  onclick="clearvar();">Clear</button>
+ 		<button onclick="abortRead();">Cancel</button>		
+		<div id="progress_bar">	<div class="percent">0%</div></div>	
+	  </div>
+	  
+	   
+		<div id='table-container'></div>
+	 </div>
+ <script src="js/privateq.js"></script>
+  </body>
+</html>
+
