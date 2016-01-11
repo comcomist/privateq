@@ -1,4 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway);
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), url(v9/0dTEPzkLWceF7z0koJaX1A.woff2) format('woff2');
+}
 #cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
@@ -95,3 +100,13 @@
 #cssmenu > ul > li > a:hover:after {
   background: #47c9af;
 }
+
+body {
+	margin: 0 auto;
+	width: 940px;
+	font: 13px/22px Helvetica, Arial, sans-serif;
+	background: #f0f0f0;
+}
+
+
+
