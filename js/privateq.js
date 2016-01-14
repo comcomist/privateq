@@ -173,6 +173,8 @@ function clearvar(){ // why it is not worling?
     if ( document.getElementById("AsText").checked){
            reader.readAsBinaryString(evt.target.files[0]);// Read in the image file as a binary string.
     }else{ reader.readAsArrayBuffer(evt.target.files[0]);}// Read in the image file as a binary string.
+//var ext = fileName.substr(fileName.lastIndexOf('.') + 1);
+// if etc == csv , call table
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);

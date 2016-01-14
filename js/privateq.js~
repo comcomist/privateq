@@ -194,7 +194,7 @@ function savefile(fileName){ // saveas http://stackoverflow.com/questions/282632
 
     saveas.click();
 }
-*/ var extension = file.substr( (file.lastIndexOf('.') +1) );
+/* var extension = file.substr( (file.lastIndexOf('.') +1) );
     switch(extension) {
         case 'jpg':
         case 'png':
@@ -210,5 +210,5 @@ function savefile(fileName){ // saveas http://stackoverflow.com/questions/282632
         break;
         default:
             alert('who knows');
-    }/*
+    }*/
 function destroyClickedElement(event){    document.body.removeChild(event.target);}

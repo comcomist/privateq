@@ -7,20 +7,136 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>privateq</title>
-    <!-- Bootstrap core CSS   --> 
+    
+    <!-- Bootstrap core CSS  
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet"> --> 
+   <link rel="stylesheet" href="css/cssmenu.css">
+  
+ <script src="js/jquery.1.11.2.min.js"></script>
+<title>privateq Help</title>
  <style type="text/css">
   .floatleft  {    float: left; }
-  .clearleft {clear: left;}</style>
+  .clearleft {clear: left;}
+<style>
+     
+      
+      .faq {        margin: 5px;      }
+      .faq dt {
+        padding: 5px;
+        border: 1px solid #000;
+      }
+       /* html, body {        font-size: 100%;   }
+      .faq dt,
+      .faq dd {
+        padding: 10px;
+        border: 1px solid #000;
+      }*/
+      
+      .faq dt a,
+      .faq dd a {
+        display: block;
+        /* color: #000; 
+        font-weight: bold;*/
+      }
+      /*
+      .faq dt {
+        background-color: #ccc;
+      }
+      
+      .faq dd {
+        margin: 0;
+        border-top-width: 0;
+        border-bottom-width: 0;
+        font-size: 1rem;
+      }
+      
+      .faq dd:last-of-type {
+        border-bottom-width: 1px;
+      }  */
+  </style>
   </head>
-<body onload="Help()">
+<body onload="encApp()">
+<div id='cssmenu'><ul>
+		<li><a target="_blank" href="https://comcomized.com/">Own</a></li>
+		<li><a target="_blank" href="http://communal-coin.wikidot.com/">Rcoin</a></li>
+		<li><a target="_blank" href="http://liquid-unions.wikidot.com/">Liquid Union</a></li>
+		<li><a target="_blank" href="http://liquid-unions.wikidot.com/the-opening-borders-project">Media</a></li>
+<li><a target="_blank" href="https://lists.riseup.net/www/subscribe/consulting-for-liquid-unions">Join</a></li>
+		<li><a target="_blank" href="http://namzezam.wikidot.com/contact">Contact</a></li>	
+		<li><a target="_blank" href="http://comcomist.wikidot.com/">About</a></li>
+	</ul></div><p>
+<a target="_blank" href="https://github.com/comcomist/privateq/archive/master.zip">Download</a> this app for offline use on your device and use <span id="encApp">  </span> for your privateQ.<br> 
+Go offline at least when generating  your <a target="_blank" href="http://namzezam.wikidot.com/blog:12">iiaom</a>. iiaom is a crypto identity used as Inner Identifier And Outer Mask for authenticating human - use it for more accountability and equality. <br>
+If "Is text" is ticked while browsing a file, click "As Table" to  get a csv file as table, or click "To Edit" for that to be savedas something other.</p>
+<dl class="faq">  <dt><a href=""> + Generate iiaom How?</a></dt>
+      <dd> Work offline and when ToHname is ticked and IsText is unticked:
+  <li><b>1.</b> compress to encrypt your image by (creating archive .zip or .7z with your secret password - use options).</li>
+  <li><b>2.</b> browse and open the image file.</li>
+  <li><b>3.</b> browse and open the encrypted file.</li>
+  <li><b>4.</b> saveas in type of archive (.zip or .7z).</li>
+</ul>
+Notes: 
+ <ul> 
+  <li> ‏<b>1.</b> Your iiaom file can be used as your peer to peer Id card, while its file name as your id  for your communication (chat/email/webrtc), transactions (for reducing risk of middle man attack stealing your identity) or as your name in social networks, as well as a table-key for your private data, keeping your identity linked but isolated and encrypted by trustee.</li>
+<li><b>2.</b> Your reputation number is calculated in base 32 as contacts*1024+1023*(contacts/signatures).</li>
+<li><b>3.</b>In another file: iiaom-file-name.pub, the reputation number is kept togather with your pubkey and the signatures of your trustee you show and for sorting by reputation use addtional empty iiaom-file-name.reputation.</li>
+<li><b>4.</b>  <i>group inner usage:</i> Every user has the csv file corresponding to [table name] of which records are distributed (in attachment and in privteq protocol) in the mailing list of the group, as the table has: signature (Approver), iiaom(Approver),  iiaom(Approved), reputation(Approved).</li> 
+ </ul>
+<p><b>To do:</b> <ul> 
+  <li>  1.The record as a file ready for attachment to be distributed.</li>
+<li> 2. the record received in attachment added to the table . </li> </ul> 
+        
+      </dd>
+      <dt><a href="">+ PrivateQ protocol:</a></dt>
+      <dd> <p> PrivateQ is a protocol for Privately querying, while having  media storage secure, when sending to individuals or transmiting to specific group, while
+ 	    on the server, each fields is encrypted by the pub key of the scope defined by the column, where the scopes are: 
+ 	     <b>0</b> of the data of owner of the record, 
+ 	     <b>1</b> of data visible to the owner as one of many children of first ancestor etc.
+ 	    for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. 
+ 	 </p><a target="_blank" href="privateq.jpg"><img src="privateq.jpg" width="320"></a></dd>
+
+      <dt><a href=""> + Use cases:</a></dt>
+      <dd><p>   Your iiaom can be used in combination with Tel number, email, address, paypal address, web address,
+     wallet-id etc, while using <i>privateq via mailing list distribution </i>.<br> 
+Example: <a target="_blank" href="http://communal-coin.wikidot.com/" style="font-weight: bold" >Rcoin</a> in self organized and decentralized accessing by <i>sellers in multiple currencies price</i> and/or decentralized routing by <i>exchangers in p2p exchangers points</i>.
+  Use it as multiple currencies price is e.g. of 3 values like fiat-currencies-central-bank-money
+       (eg. euro, dollar or yuan), Cryptocurrency (eg. bitcoin ,peercoin, faircoin)
+        , and LETS (eg.tp, rcoin, ces), where sellers can act also as as exchangers (to reduce middle man).</p>  </dl>
+
+
+<script>
+      jQuery(document).ready(function($){
+        var questions = $('.faq > dd').hide();// Hide all questions to start 
+        //questions.first().show();//Show first question on load (optional). Remove if you want
+        $('.faq > dt > a').click(function() {// On click of question title
+          var $this = $(this);
+          var t= $this.parent().next();
+		if(t.attr("on")=="1")	{t.slideUp();t.attr("on","0"); }
+		else		{t.slideDown(); t.attr("on","1");}
+          return false;
+        });
+      });
+function encApp(){
+var os		=navigator.platform.slice(0, 1),
+     encApp	= '<a target="_blank" href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
+     if (os=='L') {encApp	 ='<a target="_blank" href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
+     else if (os=='W'){encApp='<a target="_blank" href="http://www.gpg4win.org/">gpg4win</a>'; }   
+     encApp += ' or other <a target="_blank" href="https://www.gnupg.org/related_software/frontends.html">gpg Frontends</a>';  
+     document.getElementById("encApp").innerHTML=encApp;
+
+}
+
+
+/*
+
+
  <div class="container-fluid">
   <input type="checkbox" id="Help"  onclick="Help()" checked>Help<br>
-  <span class='wizardElement'></span>  
- </div>
-<script>
+  <span class='wizardElement'></span>   
+</div>
+
+
 function Help(){
 	
 var os		=navigator.platform.slice(0, 1),
@@ -32,7 +148,7 @@ var Help=
 '<p> <a target="_blank" href="https://github.com/comcomist/privateq/archive/master.zip">Download</a> this app for offline use on your device.<br>\
  Generate iiaom only while working offline, when ToHname is ticked and IsText is unticked.<br>\
  And when "Is text" is ticked, click "As Table" after browsing a csv file, to get it as table, or click "To Edit" to be saved as something other.<br>\
- <div style="float:left; width:50%;border-style: groove; padding: 10px;"> <b>Generating <a target="_blank" href="http://namzezam.wikidot.com/blog:12" style="font-weight: bold" >iiaom</a>:</b> <br>\
+ <div style="float:left; width:50%;border-right: groove; padding: 10px;"> <b>Generating <a target="_blank" href="http://namzezam.wikidot.com/blog:12" style="font-weight: bold" >iiaom</a>:</b> <br>\
  <b>1.</b> compress by (creating archive .zip or .7z)  with password ("other" options) to encrypt your image. <br>\
  <b>2.</b> browse and open the image file. <br>\
  <b>3.</b> browse and open the encrypted file. <br>\
@@ -46,7 +162,7 @@ var Help=
 <p><b>To do:</b><br> 1.The record as a file ready for attachment to be distributed.<br>\
  2. the record received in attachment added to the table .</p>\
 </div>\
- <div style="float:left; width:50%;border-style: groove; padding: 10px;">\
+ <div style="float:left; width:40%; padding: 10px;">\
  <p><b>PrivateQ protocol:</b><br>\
  Use '+ encApp + ' for your privateQ. <br>\
  PrivateQ is a protocol for Privately querying, while having  media storage secure, when sending to individuals or transmiting to specific group, while<br>\
@@ -54,9 +170,9 @@ var Help=
  	     <b>0</b> of the data of owner of the record, <br>\
  	     <b>1</b> of data visible to the owner as one of many children of first ancestor etc.<br>\
  	    for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. <br>\
- 	 </p><a target="_blank" href="https://github.com/comcomist/privateq"><img src="privateq.jpg" width="320"></a></div>\
+ 	 </p><a target="_blank" href="privateq.jpg"><img src="privateq.jpg" width="320"></a></div>\
   <div class="clearleft"></div>\
-  <div style="border-style: groove; padding: 10px;">\
+  <div style="border-left: groove; width:40%;padding: 10px;">\
   <p> <b>Use cases:</b><br>\
   Your iiaom can be used in combination with Tel number, email, address, paypal address, web address,\
      wallet-id etc, while using <i>privateq via mailing list distribution </i>.<br> \
@@ -77,7 +193,7 @@ document.querySelector('.container-fluid .wizardElement').innerHTML  = Help;
    {			document.querySelector('.container-fluid .wizardElement').innerHTML  = '';	} 
         
 	}
-	
+	*/
 	
 </script>		 
 </body>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>faq</title>
+    <style>
+      html, body {
+        font-size: 100%;  
+      }
+      
+      .faq {
+        margin: 50px;
+      }
+      
+      .faq dt,
+      .faq dd {
+        padding: 10px;
+        border: 1px solid #000;
+      }
+      
+      .faq dt a,
+      .faq dd a {
+        display: block;
+        color: #000;
+        font-weight: bold;
+      }
+      
+      .faq dt {
+        background-color: #ccc;
+      }
+      
+      .faq dd {
+        margin: 0;
+        border-top-width: 0;
+        border-bottom-width: 0;
+        font-size: 1rem;
+      }
+      
+      .faq dd:last-of-type {
+        border-bottom-width: 1px;
+      }
+    </style>
+
+    <script src="js/jquery.1.11.2.min.js"></script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($){
+        var questions = $('.faq > dd').hide();// Hide all questions to start 
+        //questions.first().show();//Show first question on load (optional). Remove if you want
+        $('.faq > dt > a').click(function() {// On click of question title
+          var $this = $(this);
+          var t= $this.parent().next();
+var o=t.attr("on");
+		if(o=="1")	{t.slideUp();t.attr("on","0"); }
+		else		{t.slideDown(); t.attr("on","1");}
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body><p>This is a paraglkjlkjraph.</p>
+    <dl class="faq">
+      <dt><a href=""> + why 1?</a></dt>
+      <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisl quam, convallis ac lacus vel, mollis bibendum ante.</dd>
+
+      <dt><a href="">+ why 2?</a></dt>
+      <dd>Suspendisse potenti. In ullamcorper posuere nibh, in pretium metus porttitor vitae. Aenean felis libero, condimentum sagittis.</dd>
+
+      <dt><a href=""> + why 3?</a></dt>
+      <dd>Laoreet quis, auctor in orci. Ut gravida nibh vitae lorem egestas, vel commodo mi gravida. Curabitur elementum dolor id lacus.</dd>
+    </dl>
+<p>This is a paraglkjlkjraph.</p>
+  </body>
+</html>
