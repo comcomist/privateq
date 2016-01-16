@@ -71,7 +71,8 @@
   
 </div>
 <dl class="faq">  
- <a target="_blank" href="https://github.com/comcomist/privateq/archive/master.zip">Download</a>  this. <span id="encApp">  </span> 
+ <span id="encApp"> </span>
+
 <dt><a href=""> + Generate iiaom How?</a></dt>
       <dd> Work offline and when "Iiaom" is ticked:
   <li><b>1.</b> compress to encrypt your image by (creating archive .zip or .7z with your secret password - use options).</li>
@@ -108,12 +109,17 @@ Example: Rcoin in self organized and decentralized accessing by <i>sellers in mu
   Use it as multiple currencies price is e.g. of 3 values like fiat-currencies-central-bank-money
        (eg. euro, dollar or yuan), Cryptocurrency (eg. bitcoin ,peercoin, faircoin)
         , and LETS (eg.tp, rcoin, ces), where sellers can act also as as exchangers (to reduce middle man).</p>  </dl>
-
-
+ <a target="_blank" href="https://github.com/comcomist/privateq/archive/master.zip">Download this.</a>
+ <button onclick="Show()"  title="Click to Show all and then use find to search.">Show all</button> 
 <script>
+function Show(){document.questions.show();
+//document.questions.hide();
+}// show all for using find
       jQuery(document).ready(function($){
         var questions = $('.faq > dd').hide();// Hide all questions to start 
-        //questions.first().show();//Show first question on load (optional). Remove if you want
+document.questions=questions;
+        //questions.show();// show all for using find
+//questions.first().show();//Show first question on load (optional). Remove if you want
         $('.faq > dt > a').click(function() {// On click of question title
           var $this = $(this);
           var t= $this.parent().next();
@@ -124,13 +130,13 @@ Example: Rcoin in self organized and decentralized accessing by <i>sellers in mu
       });
 function encApp(){
 var state='';
- if(navigator.onLine)state='You are working online.'  ; else state='You are working offline.'  ; 
+ if(navigator.onLine)state='[ONLINE-mode]'  ; else state='[OFFLINE-mode]'  ; 
 var os		=navigator.platform.slice(0, 1),
      encApp	=  ' <a target="_blank" href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
      if (os=='L') {encApp	 ='<a target="_blank" href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
      else if (os=='W'){encApp='  <a target="_blank" href="http://www.gpg4win.org/">gpg4win</a>'; }   
      encApp += ' or  <a target="_blank" href="https://www.gnupg.org/related_software/frontends.html">other</a> <a target="_blank" href="https://www.gnupg.org/index.html">GPG</a>. ' ;  
- encApp='For your privateQ use '+encApp+state;
+ encApp='Welcome, for your privateQ, use '+encApp + state;
      document.getElementById("encApp").innerHTML=encApp;
 
 }
