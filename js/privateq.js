@@ -96,7 +96,7 @@ return	base16to32of64(CryptoJS.SHA256(data).toString());
       }
 
       $("#my-table").DataTable(datatables_options);
-	  document.getElementById('ioput').value=null;
+	  //document.getElementById('ioput').value=null;
      // if (allow_download) $("#" + el).append("<p><a class='btn btn-info' href='" + csv_path + "'><i class='glyphicon glyphicon-download'></i> Download as CSV</a></p>");
     //    });
 }
@@ -160,21 +160,49 @@ function clearvar(){ // why it is not worling?
     reader.onloadstart = function(e) {
       document.getElementById('progress_bar').className = 'loading';
     };
-    reader.onload = function(e) {
-		
-	  window.content	   = this.result;
-	  hash(window.content);
+    reader.onload  = function(e) {
+    window.content = this.result;
+    var c  = this.result,
+	fileName = evt.target.files[0].name,
+	i  = fileName.lastIndexOf('.'),
+	ext = fileName.substring(i+1);
+    if(document.getElementById("ToHash").checked)
+      { hash(c); } else
+      { EditContent(c);	
+	switch(ext) {
+	case 'csv':
+		init_table(c) ;break;
+        case 'jpg':
+        case 'png':
+        case 'gif':
+            //alert('was jpg png gif');  // There's was a typo in the example where
+        break;                         // the alert ended with pdf instead of gif.
+        case 'zip':
+        case 'rar':
+            //alert('was zip rar');
+        break;
+        case 'pdf':
+            //alert('was pdf');
+        break;
+
+        default://            alert('who knows');
+       }
+	 // if('csv' ==  )
+	//	init_table(c) ;
+      }
+//	  hash(window.content);
 	  		// Ensure that the progress bar displays 100% at the end.
       progress.style.width = '100%';
       progress.textContent = '100%';          
       setTimeout("document.getElementById('progress_bar').className='';", 2000);
      
     }
-    if ( document.getElementById("AsText").checked){
-           reader.readAsBinaryString(evt.target.files[0]);// Read in the image file as a binary string.
-    }else{ reader.readAsArrayBuffer(evt.target.files[0]);}// Read in the image file as a binary string.
-//var ext = fileName.substr(fileName.lastIndexOf('.') + 1);
-// if etc == csv , call table
+    if ( document.getElementById("ToHash").checked){//AsText=!ToHash
+ reader.readAsArrayBuffer(evt.target.files[0]);}// Read in the image file as a binary string.
+    else{reader.readAsBinaryString(evt.target.files[0]);}// Read in the image file as a binary string.
+
+    //if ( document.getElementById("AsText").checked){           reader.readAsBinaryString(evt.target.files[0]);// Read in the image file as a binary string.
+    //}else{ reader.readAsArrayBuffer(evt.target.files[0]);}// Read in the image file as a binary string.
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);

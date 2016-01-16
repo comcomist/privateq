@@ -7,9 +7,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
     <!-- Bootstrap core CSS  
-  <link href="css/dataTables.bootstrap.css" rel="stylesheet">  -->
+  -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-  
+  <link href="css/dataTables.bootstrap.css" rel="stylesheet">  
     <link href="css/privateq.css" rel="stylesheet">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="css/cssmenu.css">
@@ -21,25 +21,25 @@
      <script src="js/jquery.csv.min.js"></script>
      <script src="js/jquery.dataTables.min.js"></script>    
      <script src="js/dataTables.bootstrap.js"></script> 
-  
+   <script src="js/privateq.js"></script>
 </head>
   <body> 
 <div class="container-fluid">
- 	  <div>
-		  <div class="floatleft"> 
+ 	  <div><input type="file" id="files" name="file" />
+		  <div class="floatleft">
 
-		 <button onclick="savefile(SHA256in32(window.hname)+'.type')">SaveAs...</button>	
-		 </div>	  
-		 <input type="file" id="files" name="file" /><div class="clearleft"></div>
-		 <div class="floatleft"> 		
-			 
-			 <textarea  id="ioput"></textarea>
-		 </div>
+ 
+ <button onclick="savefile(SHA256in32(window.hname)+'.type',window.content)">Save</button>	
+<input type="checkbox" id="ToHash" onclick="hash(window.content)"  unchecked title="Untick this to browse csv file and view tables, or tick it to create your iiaom file. Iiaom is a crypto identity used as Inner Identifier And Outer Mask for authenticating human - use it for more accountability and equality. Please work offline.">Iiaom	 
+</div>	  
+		 
+<div class="clearleft"></div>
+		 <div class="floatleft">  <textarea  id="ioput"></textarea> </div>
+		 
 				  		 
-		 <input type="checkbox" id="AsText" >IsText<br>
-		 <input type="checkbox" id="ToHash" onclick="hash(window.content)"  checked>ToHname<br>
+		<!--  navigator.onLine  <input type="checkbox" id="AsText" >Text<br>
 		 <button onclick="init_table(window.content)">As Table</button> 		 
-		 <button onclick="EditContent(window.content)">To Edit</button>   
+		 <button onclick="EditContent(window.content)">To Edit</button>   -->
 		 <div class="clearleft">
 		  <a target="_blank" href="http://namzezam.wikidot.com/humanitarian-agpl-license" style="font-weight: bold" >Under Humanitarian Agpl License</a></div> 
 	  </div> 
@@ -60,7 +60,8 @@
 	   
 		<div id='table-container'></div>
 	 </div>
- <script src="js/privateq.js"></script>
+
+
   </body>
 </html>
 
