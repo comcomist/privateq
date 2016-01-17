@@ -1,0 +1,5 @@
+PrivateL: (More practical and easy to use, but less secure than privateq, as it is depended on all members, not only on each of them.) Private list management, while using enigmail or https://www.gnupg.org/related_software/frontends.html#sec-1-2 , where any message to the list, other than the initiation, is sent encrypted with L[0] and the initiation includes:
+1. admin creates L[0] being a symmetric key of the list
+2. per each member, admin , create L[member] being L[0] encrypted with the pubkey of the member. 
+3. admin sends L[member] to each of the members , either as one updateL  message to the list having attached all L[each member],  or to each members individually.
+4. Any new member sends her/his pubK to the list and gets her/his L(member) from admin or any member.

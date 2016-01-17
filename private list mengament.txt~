@@ -1,0 +1,8 @@
+More practical and easy to use, but less secure than privateq as it is  depended on all members, not only on each of them: list management while using enigmail or https://www.gnupg.org/related_software/frontends.html#sec-1-2
+
+1. admin creates L(0) being a symmetric key of the list
+1.1 per each member, admin , create L(member) being L(0) encrypted with the pubkey of the member. 
+1.2. admin sends L to the members , either as one updateL  message to the list having all L(memebrs) attached or to each members individually.
+
+2. new member sends her/his pubK to the list and gets her/his L(member) from admin or any member.
+

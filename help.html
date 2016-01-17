@@ -93,13 +93,19 @@ Notes:
         
       </dd>
       <dt><a href="">+ PrivateQ protocol:</a></dt>
-      <dd> <p> PrivateQ is a protocol for Privately querying, while having  media storage secure, when sending to individuals or transmiting to specific group, while
- 	    on the server, each fields is encrypted by the pub key of the scope defined by the column, where the scopes are: <ul> 
+      <dd> <p> PrivateQ is a protocol for Privately querying, when having  media storage secured, while sending to individuals or transmitting to group, where, each fields is encrypted by the pub key of the scope defined by the column and the scopes are: <ul> 
   <li> 
  	     <b>0</b> of the data of owner of the record, </li>
 <li>
  	     <b>1</b> of data visible to the owner as one of many children of first ancestor etc.</li></ul> 
- 	    for reducing centralization: Tables holding such privateq could be downloaded to be cloned by its server users. 
+<b>For reducing centralization</b>: Tables holding such privateQ could be downloaded for being cloned by the users. <br>
+
+More practical and easy to use, but less secure than privateq, as it is depended on all members, not only on each of them, is PrivateL.<br>
+ <b>PrivateL:</b>  Private list management, while using enigmail or other MUAs, where any message to the list, other than the initiation, is sent encrypted with L[0] (or its public key) and the initiation includes:<ol><li>
+Admin creates L[0] being a symmetric key or a public/private pair of the list (so that members read by the private and write by the public).</li><li>
+Per each member, admin , create L[member] being L[0] encrypted with the pubkey of the member. </li><li> 
+Admin sends L[member] to each of the members , either as one updateL  message to the list having attached all L[each member],  or to each members individually.</li><li>
+Any new member sends her/his pubK to the list and gets her/his L(member) from admin or any member.</li></ol>
  	 </p><a target="_blank" href="privateq.jpg"><img src="privateq.jpg" width="320"></a></dd>
 
       <dt><a href=""> + Use cases:</a></dt>
@@ -135,7 +141,7 @@ var os		=navigator.platform.slice(0, 1),
      encApp	=  ' <a target="_blank" href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
      if (os=='L') {encApp	 ='<a target="_blank" href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
      else if (os=='W'){encApp='  <a target="_blank" href="http://www.gpg4win.org/">gpg4win</a>'; }   
-     encApp += ' or  <a target="_blank" href="https://www.gnupg.org/related_software/frontends.html">other</a> <a target="_blank" href="https://www.gnupg.org/index.html">GPG</a>. ' ;  
+     encApp += ' or  <a target="_blank" href="https://www.gnupg.org/related_software/frontends.html#sec-1-1">other</a>. ' ;  
  encApp='Welcome, for your privateQ, use '+encApp + state;
      document.getElementById("encApp").innerHTML=encApp;
 
