@@ -21,20 +21,20 @@
      <script src="js/jquery.csv.min.js"></script>
      <script src="js/jquery.dataTables.min.js"></script>    
      <script src="js/dataTables.bootstrap.js"></script> 
-  
+ 
+<script src="js/table2CSV.js"></script>  
 </head>
   <body> 
 <div class="container-fluid">
  	  <div><input type="file" id="files" name="file" />
 		  <div class="floatleft">
-
  
  <button onclick="savefile(SHA256in32(window.hname)+'.type',window.content)">Save</button>	
 <input type="checkbox" id="ToHash" onclick="hash(window.content)"  unchecked title="Untick this to browse files and view csv file as table, or tick it to create your iiaom file. Iiaom is a crypto identity used as Inner Identifier And Outer Mask for authenticating human - use it for more accountability and equality. Please work offline.">Iiaom	 
 </div>	  
 		 
 <div class="clearleft"></div>
-<div class="floatleft">  <textarea  id="ioput"></textarea> </div>
+		 <div class="floatleft">  <textarea  id="ioput"></textarea> </div>
 		 
 				  		 
 		<!--  navigator.onLine  <input type="checkbox" id="AsText" >Text<br>
@@ -51,14 +51,21 @@
 
 	  
 	  <div>
+		
 	 	<button  onclick="clearvar();">Clear</button>
  		<button onclick="abortRead();">Cancel</button>		
 		<div id="progress_bar">	<div class="percent">0%</div></div>	
-	  </div>	   
+	  </div>
+	  
+	
+
+ 
 		<div id='table-container'></div>
-		
+
 	 </div>
- <script src="js/privateq.js"></script>
+
+<script src="js/privateq.js"></script>
+
   </body>
 </html>
 
