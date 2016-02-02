@@ -3,16 +3,17 @@
   <!-- License: Humanitarian-Agpl: http://namzezam.wikidot.com/humanitarian-agpl-license -->
   <head>
     <meta charset="utf-8">
-<title>privateQ</title>
+<title>privateQ and Iiaom</title>
      
   
 
   </head>
-<frameset cols="60%,*">
+<frameset cols="25%,*">
 <frame src="help.html">
 <frame src="privateq.html">  
-  
-
+ <!-- 
+<frame src="connect.html">    
+-->
 </frameset>  
 
 </html>

@@ -1,15 +1,43 @@
- 
- 
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+/*
+	  	var //hh=CryptoJS.SHA256(data).toString();
+			h=SHA256in32(data);
+			//base16to32of64(CryptoJS.SHA256(data).toString());// 7/8 bases : hh in  16 -> h in 32
+		 
+			 window.hname+=h;
+			// document.getElementById('ioput').value= h;//h;//str.toUpperCase();
+	 
+
+	
+	 }*/
+//var reader;
+//function abortRead() {    reader.abort();}// <button onclick="abortRead();">Cancel</button>	
+/* <div id="progress_bar">	<div class="percent">0%</div></div>	
+ function updateProgress(evt) {
+    
+    // evt is an ProgressEvent.
+    if (evt.lengthComputable) {
+      var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+      // Increase the progress bar length.
+      if (percentLoaded < 100) {
+        progress.style.width = percentLoaded + '%';
+        progress.textContent = percentLoaded + '%';
+      } //else if (percentLoaded == 100){}
+		  
+    }
+
+} */
 function display_c(){ var refresh=300; // Refresh rate in milli seconds
-	mytime=setTimeout('display_ct()',refresh); // when .. <body onload="display_ct()">
-}
+	mytime=setTimeout('display_ct()',refresh);} // when .. <body onload="display_ct()">
 
 function display_ct() {
 	//var strcount;
 	var x = new Date();
 	document.getElementById('wizardElement').innerHTML = x.getUTCSeconds()	;
-	tt=display_c();
-}
+	tt=display_c();}
+	
 function base16to32of64(hh){
 	return 	 parseInt(hh.slice(0,8),16).toString(32).toUpperCase()+
 			 parseInt(hh.slice(8,16),16).toString(32).toUpperCase()+
@@ -18,48 +46,69 @@ function base16to32of64(hh){
 			 parseInt(hh.slice(32,40),16).toString(32).toUpperCase()+
 			 parseInt(hh.slice(40,48),16).toString(32).toUpperCase()+
 			 parseInt(hh.slice(48,56),16).toString(32).toUpperCase()+			 			 
- 			 parseInt(hh.slice(56,64),16).toString(32).toUpperCase() ;	
-	}
-	
-	function SHA256in32(data){
-return	base16to32of64(CryptoJS.SHA256(data).toString());
+ 			 parseInt(hh.slice(56,64),16).toString(32).toUpperCase() ;}	
+function SHA256in32(data){ return	base16to32of64(CryptoJS.SHA256(data).toString());}
+function ab2str(buf){ v= new DataView(buf);
+	return  v.getUint8(buf) ;}
+// {  return String.fromCharCode.apply(null, new Uint16Array(buf));}//https://developers.google.com/web/updates/2012/06/How-to-convert-ArrayBuffer-to-and-from-String
+function arrayBufferToWordArray(ab) {
+  var i8a = new Uint8Array(ab);
+  var a = [];
+  for (var i = 0; i < i8a.length; i += 4) {
+    a.push(i8a[i] << 24 | i8a[i + 1] << 16 | i8a[i + 2] << 8 | i8a[i + 3]);
+  }
+  return CryptoJS.lib.WordArray.create(a, i8a.length);
 }
- function hash(data){
-	     if ( document.getElementById("ToHash").checked){
-			var //hh=CryptoJS.SHA256(data).toString();
-			h=SHA256in32(data);
-			//base16to32of64(CryptoJS.SHA256(data).toString());// 7/8 bases : hh in  16 -> h in 32
-		 
-			 window.hname+=h;
-			// document.getElementById('ioput').value= h;//h;//str.toUpperCase();
-	 }
+function hashBlob(c){ return SHA256in32(arrayBufferToWordArray(c));	}
+function hashText(c){ return SHA256in32(c);	}
 
-	
-	 }
- function EditContent(data){  
-//	 var buffer = new ArrayBuffer(12);
-//var dataView = new DataView(buffer);
-//var str =ab2str(data); 
-//new Uint8Array(data);
-//var str = data.toString();
-//String.fromCharCode.apply(null, new Uint16Array(data));
+///dataview.getUint8(byteOffset)
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/getUint8
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView
+function str2ab(str) {
+  var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+  var bufView = new Uint16Array(buf);
+  for (var i=0, strLen=str.length; i<strLen; i++) {
+    bufView[i] = str.charCodeAt(i);
+  }
+  return buf;
+}
 
-
-	 document.getElementById('ioput').value=data;
-	 }
-
- //----------------------ViewTable
-/* to locate the row on line and colm on skip comma on the ioput
-function clicked() {//http://stackoverflow.com/questions/28357314/find-row-and-column-of-clicked-table-cell-in-javascript-without-jquery
-    alert("clicked cell at: " + this.cellIndex + ", " + this.parentNode.rowIndex);
+/*
+function bin2hex(s) {//https://github.com/kvz/phpjs/blob/master/functions/strings/bin2hex.js
+  var l,i,  o = '',    n;
+  //s += '';
+  for (i = 0, l =s.byteLength; i < l; i++) {
+    n = s.charCodeAt(i).toString(16);
+    o += n.length < 2 ? '0' + n : n;  }
+    //console.log(0);
+  return o;
 }*/
+//function hash(data){document.getElementById('ioput').value= SHA256in32(data);}
+function GenrteIiaom(){
+	if (!window.GenIiaomStep){
+		//window.hname=null;
+		
+		 prompt( "Step 1 of 3: Click Browse.. to open your image file.","continue?");
+		document.getElementById('ioput').value="1. open your image file and .2 encryp it and open it 3. save the encrypted file."; 
+		window.GenIiaomStep=1;
+		document.getElementById("Giiaom").value = "1";
+	} else{
+		//document.getElementById('ioput').value= window.hname;				
+		document.getElementById("Giiaom").value = "0";						
+	  	  }
+}
+			 
+//function EditContent(data){   document.getElementById('ioput').value=data;}
+
 function onc(i) {var t = prompt( "Press ok to replace the value: " + i.textContent  , i.textContent);//("+i.parentNode.rowIndex +","+ i.cellIndex +")
  if (t != null)  i.textContent=t;}
  
 function export2csv() {$('#table-container').table2CSV();}//	var t = prompt( "Press ok to" , "123i.textContent");}
 
-// $(".container-fluid .var_app").html(); // Using the jQuery library 
- function init_table(data) {// Thanks to Derek Eder under mit: Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+function init_table(data) {// Thanks to Derek Eder under mit: Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	//if (data==null) return;
 	// data=ab2str(data);
   var options={
    //     csv_path: 'fatty_acid_profiles.csv',
@@ -118,21 +167,16 @@ function export2csv() {$('#table-container').table2CSV();}//	var t = prompt( "Pr
 }
 
 function clearvar(){ // why it is not worling?
-	  window.content=null;
+//	  window.content=null;
 	 // window.Scontent="";
 	 
-    window.hname=null;
+//    window.hname=null;
     document.getElementById('ioput').value= "";//null;   // document.getElementById('harea').value= null;
 	init_table(null);}
-//---------------------------OpenFile 
-  //http://www.html5rocks.com/en/tutorials/file/dndfiles/
-  var reader;
-  var progress = document.querySelector('.percent');
-  function abortRead() {
-    reader.abort();
-  }
+	
+//---------------------------OpenFile http://www.html5rocks.com/en/tutorials/file/dndfiles/
 
-  function errorHandler(evt) {
+function errorHandler(evt) {
     switch(evt.target.error.code) {
       case evt.target.error.NOT_FOUND_ERR:
         alert('File Not Found!');
@@ -145,47 +189,68 @@ function clearvar(){ // why it is not worling?
       default:
         alert('An error occurred reading this file.');
     };
-  }
+ }
 
 
-  function updateProgress(evt) {
-    
-    // evt is an ProgressEvent.
-    if (evt.lengthComputable) {
-      var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
-      // Increase the progress bar length.
-      if (percentLoaded < 100) {
-        progress.style.width = percentLoaded + '%';
-        progress.textContent = percentLoaded + '%';
-      } //else if (percentLoaded == 100){}
-		  
-    }
 
-  }
-
-  function handleFileSelect(evt) {
+function handleFileSelect(evt) {
     // Reset progress indicator on new file selection.
-    progress.style.width = '0%';
-    progress.textContent = '0%';
+    
+    //var progress = document.querySelector('.percent');
+    //progress.style.width = '0%';
+    //progress.textContent = '0%';
  
     reader = new FileReader();
     reader.onerror = errorHandler;
-    reader.onprogress = updateProgress;
+    //reader.onprogress = updateProgress;
     reader.onabort = function(e) {
       alert('File read cancelled');
     };
-    reader.onloadstart = function(e) {
-      document.getElementById('progress_bar').className = 'loading';
-    };
+    reader.onloadstart = function(e) {  //    document.getElementById('progress_bar').className = 'loading'; 
+		 };
     reader.onload  = function(e) {
-    window.content = this.result;
+//    window.content = this.result;
     var c  = this.result,
 	fileName = evt.target.files[0].name,
 	i  = fileName.lastIndexOf('.'),
 	ext = fileName.substring(i+1);
-    if(document.getElementById("ToHash").checked)
-      { hash(c); } else
-      { EditContent(c);	
+    if(window.GenIiaomStep)
+      {//window.GenIiaomStep++;
+	   if(++window.GenIiaomStep==2){
+		   //document.getElementById('ioput').value= "Step 2 of 3: Click Browse.. to open the encrypt file." ;
+		   document.getElementById('ioput').value =hashBlob(c);
+		   document.getElementById("Giiaom").value = "2";
+		   prompt( "Step 2 of 3: Encrypt the image file and then open the encrypted file.","Continu?");
+		   }
+	  else{ //var h1=document.getElementById('ioput').value+hashBlob(c);
+		  //document.getElementById('ioput').value= h1;
+		  document.getElementById('ioput').value= hashText(document.getElementById('ioput').value+hashBlob(c));
+		  prompt("Last step of 3: save this file. its name is your iiaom" ,"Continu?");
+		  //document.getElementById('ioput').value= hashText(h1);
+		  
+		    
+		  	document.getElementById("Giiaom").value = "3";
+	//	  	document.getElementById('ioput').value= 	SHA256in32(document.getElementById('ioput').value+bin2hex(c));
+		  	
+//		  	document.getElementById('ioput').value=hash(document.getElementById('ioput').value);
+		  	savefile(document.getElementById('ioput').value +'.iiaom',c);
+		    
+		  	window.GenIiaomStep=0;
+		  	document.getElementById("Giiaom").value="0";
+		   }
+		   
+		   
+		   
+	//prompt( "please brouse your image file  and then encrypt it" ,0);
+	//	prompt( "please browse the encrypter  your image file " );
+	//.1 open image fiile
+	// 2.open it encrypted ver
+//	savefile(SHA256in32(window.hname)+'.type',window.content);// 3.save the iiaom
+	//window.GenIiaomStep=0;
+	    
+	  } 
+	 else
+      { document.getElementById('ioput').value=c;	
 	switch(ext) {
 	case 'csv':
 		init_table(c) ;break;
@@ -207,22 +272,25 @@ function clearvar(){ // why it is not worling?
 	 // if('csv' ==  )
 	//	init_table(c) ;
       }
-//	  hash(window.content);
+//	  (window.content);
 	  		// Ensure that the progress bar displays 100% at the end.
-      progress.style.width = '100%';
-      progress.textContent = '100%';          
-      setTimeout("document.getElementById('progress_bar').className='';", 2000);
+//      progress.style.width = '100%';
+ //     progress.textContent = '100%';          
+   //   setTimeout("document.getElementById('progress_bar').className='';", 2000);
      
     }
-    if ( document.getElementById("ToHash").checked){//AsText=!ToHash
- reader.readAsArrayBuffer(evt.target.files[0]);}// Read in the image file as a binary string.
+    if ( window.GenIiaomStep)//AsText=!ToHash
+         {reader.readAsArrayBuffer(evt.target.files[0]);// needed to be save as is : Read in the image file as a binary string.
+          //reader.readAsText(evt.target.files[0]);// UTF-8 ? needed for hash manipuations : Read in the image file as a  string.
+          
+	  }
     else{reader.readAsBinaryString(evt.target.files[0]);}// Read in the image file as a binary string.
-
+//readAsText
     //if ( document.getElementById("AsText").checked){           reader.readAsBinaryString(evt.target.files[0]);// Read in the image file as a binary string.
     //}else{ reader.readAsArrayBuffer(evt.target.files[0]);}// Read in the image file as a binary string.
-  }
+}
 
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
 //--------------------------savefile
 function saveioput(){savefile('nameit.csv', document.getElementById('ioput').value);}
 
@@ -244,6 +312,8 @@ function savefile(fileName,content){ // saveas http://stackoverflow.com/question
 
     saveas.click();
 }
+
+function destroyClickedElement(event){    document.body.removeChild(event.target);}
 /* var extension = file.substr( (file.lastIndexOf('.') +1) );
     switch(extension) {
         case 'jpg':
@@ -261,4 +331,37 @@ function savefile(fileName,content){ // saveas http://stackoverflow.com/question
         default:
             alert('who knows');
     }*/
-function destroyClickedElement(event){    document.body.removeChild(event.target);}
+
+
+
+
+
+//	 var buffer = new ArrayBuffer(12);
+//var dataView = new DataView(buffer);
+//var str =ab2str(data); 
+//new Uint8Array(data);
+//var str = data.toString();
+//String.fromCharCode.apply(null, new Uint16Array(data));
+
+
+/*
+ function (data){
+	     if ( window.GenIiaomStep){
+			var //hh=CryptoJS.SHA256(data).toString();
+			h=SHA256in32(data);
+			//base16to32of64(CryptoJS.SHA256(data).toString());// 7/8 bases : hh in  16 -> h in 32
+		 
+			 window.hname+=h;
+			// document.getElementById('ioput').value= h;//h;//str.toUpperCase();
+	 }
+
+	
+	 }//window.hname+=SHA256in32(data);
+	 */	
+
+ //----------------------ViewTable
+/* to locate the row on line and colm on skip comma on the ioput
+function clicked() {//http://stackoverflow.com/questions/28357314/find-row-and-column-of-clicked-table-cell-in-javascript-without-jquery
+    alert("clicked cell at: " + this.cellIndex + ", " + this.parentNode.rowIndex);
+}*/
+// $(".container-fluid .var_app").html(); // Using the jQuery library 

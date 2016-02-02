@@ -3,6 +3,8 @@
   <!-- License: Humanitarian-Agpl: http://namzezam.wikidot.com/humanitarian-agpl-license -->
   <head>  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
@@ -26,18 +28,25 @@
 </head>
   <body> 
 <div class="container-fluid">
- 	  <div><input type="file" id="files" name="file" />
+ 	  <div><input type="file" id="files" name="file" />	
+ 	 <button onclick="GenrteIiaom()" title="Click this to create your iiaom in 3 steps. Iiaom is a crypto identity used as Inner Identifier And Outer Mask for authenticating human while protecting against identity thefts. Use it for more accountability and equality. Please work offline.">Generate Iiaom</button>
+ 	   <progress   id="Giiaom" value="0" max="3" ></progress>
+ 	   <button  onclick="clearvar();">Clear</button> 
 		  <div class="floatleft">
  
- <button onclick="savefile(SHA256in32(window.hname)+'.type',window.content)">Save</button>	
-<input type="checkbox" id="ToHash" onclick="hash(window.content)"  unchecked title="Untick this to browse files and view csv file as table, or tick it to create your iiaom file. Iiaom is a crypto identity used as Inner Identifier And Outer Mask for authenticating human - use it for more accountability and equality. Please work offline.">Iiaom	 
+ 
+
 </div>	  
 		 
 <div class="clearleft"></div>
 		 <div class="floatleft">  <textarea  id="ioput"></textarea> </div>
 		 
 				  		 
-		<!--  navigator.onLine  <input type="checkbox" id="AsText" >Text<br>
+		<!--  document.getElementById("Giiaom").value = "75";
+		<input type="checkbox" onclick="GenrteIiaom()"  id="Giiaom" title="Tick it only to create your iiaom file. Iiaom is a crypto identity used as Inner Identifier And Outer Mask for authenticating human. Use it for more accountability and equality. Please work offline." unchecked >
+<input type="checkbox" id="ToHash" onclick="hash(window.content)"  unchecked >Iiaom	 
+
+		 navigator.onLine  <input type="checkbox" id="AsText" >Text<br>
 		 <button onclick="init_table(window.content)">As Table</button> 		 
 		 <button onclick="EditContent(window.content)">To Edit</button>   -->
 		 <div class="clearleft">
@@ -46,15 +55,16 @@
 	<!--     
 		<button onclick="hash(window.content)">Hname</button>
 		<button onclick="init_table(window.content)">Table</button>	
-		 <a href="help.html" style="font-weight: bold">Help </a>	
+		 <a href="help.html" style="font-weight: bold">Help </a>
+		 <button onclick="abortRead();">Cancel</button>		
 	-->	
 
 	  
 	  <div>
 		
-	 	<button  onclick="clearvar();">Clear</button>
- 		<button onclick="abortRead();">Cancel</button>		
-		<div id="progress_bar">	<div class="percent">0%</div></div>	
+	 	
+ 			
+		
 	  </div>
 	  
 	
