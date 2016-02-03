@@ -18,62 +18,32 @@
  <style type="text/css">
   .floatleft  {    float: left; }
   .clearleft {clear: left;}
-<style>
-     
-      
-      .faq {        margin: 5px;      }
-      .faq dt {
-        padding: 5px;
-        border: 1px solid #000;
-      }
-       /* html, body {        font-size: 100%;   }
-      .faq dt,
-      .faq dd {
-        padding: 10px;
-        border: 1px solid #000;
-      }*/
-      
-      .faq dt a,
-      .faq dd a {
-        display: block;
-        /* color: #000; 
-        font-weight: bold;*/
-      }
-      /*
-      .faq dt {
-        background-color: #ccc;
-      }
-      
-      .faq dd {
-        margin: 0;
-        border-top-width: 0;
-        border-bottom-width: 0;
-        font-size: 1rem;
-      }
-      
-      .faq dd:last-of-type {
-        border-bottom-width: 1px;
-      }  */
+  .faq {        margin: 5px;      }
+  .faq dt {        padding: 5px;        border: 1px solid #000; }
   </style>
   </head>
 <body onload="encApp()">
+	
 <dl class="faq">  
  <span id="encApp"> </span>
-
+<a target="_blank" href="https://github.com/comcomist/privateq/archive/master.zip">Download this app for working offline.</a>
+ <button onclick="Show()"  title="Click to Show all and then use find to search.">Show all items</button> 
 <dt><a href=""> + Generate iiaom How?</a></dt>
-      <dd> Work offline and when "Iiaom" is ticked:
-  <li><b>1.</b> compress to encrypt your image by (creating archive .zip or .7z with your secret password - use options).</li>
-  <li><b>2.</b> browse and open the image file.</li>
-  <li><b>3.</b> browse and open the encrypted file.</li>
-  <li><b>4.</b> Save in type of archive (.zip or .7z).</li>
+      <dd> Work offline and click "Generate Iiaom":
+  <li><b>1.</b> browse to open the image file.</li>
+  <li><b>2.</b> compress to encrypt your image by (creating archive .zip or .7z with your secret password - use options) and
+<ul> 
+  <li>   browse to open the encrypted file.</li></ul>
+  </li>
+  <li><b>3.</b> Save in type of archive (.zip or .7z).</li>
 </ul>
-Notes: 
- <ul> 
-  <li> ‏<b>1.</b> Your iiaom file can be used as your peer to peer Id card, while its file name as your id  for your communication (chat/email/webrtc), transactions (for reducing risk of middle man attack stealing your identity) or as your name in social networks, as well as a table-key for your private data, keeping your identity linked but isolated and encrypted by trustee.</li>
+Some Notes About the Iiaom: 
+ 
+<li> ‏<b>1.</b> Your iiaom file can be used as your peer to peer Id card, while its file name as your id  for your communication (chat/email/webrtc), transactions (for reducing risk of middle man attack stealing your identity) or as your name in social networks, as well as a table-key for your private data, keeping your identity linked but isolated and encrypted by trustee.</li>
 <li><b>2.</b> Your reputation number is calculated in base 32 as contacts*1024+1023*(contacts/signatures).</li>
 <li><b>3.</b>In another file: iiaom-file-name.pub, the reputation number is kept togather with your pubkey and the signatures of your trustee you show and for sorting by reputation use addtional empty iiaom-file-name.reputation.</li>
 <li><b>4.</b>  <i>group inner usage:</i> Every user has the csv file corresponding to [table name] of which records are distributed (in attachment and in privteq protocol) in the mailing list of the group, as the table has: signature (Approver), iiaom(Approver),  iiaom(Approved), reputation(Approved).</li> 
- </ul>
+ 
 <p><b>To do:</b> <ul> 
   <li>  1.The record as a file ready for attachment to be distributed.</li>
 <li> 2. the record received in attachment added to the table . </li> </ul> 
@@ -98,8 +68,7 @@ Example: Rcoin in self organized and decentralized accessing by <i>sellers in mu
   Use it as multiple currencies price is e.g. of 3 values like fiat-currencies-central-bank-money
        (eg. euro, dollar or yuan), Cryptocurrency (eg. bitcoin ,peercoin, faircoin)
         , and LETS (eg.tp, rcoin, ces), where sellers can act also as as exchangers (to reduce middle man).</p>  </dl>
- <a target="_blank" href="https://github.com/comcomist/privateq/archive/master.zip">Download this.</a>
- <button onclick="Show()"  title="Click to Show all and then use find to search.">Show all</button> 
+ 
 <script>
 function Show(){document.questions.show();
 //document.questions.hide();
@@ -119,13 +88,13 @@ document.questions=questions;
       });
 function encApp(){
 var state='';
- if(navigator.onLine)state='[ONLINE-mode]'  ; else state='[OFFLINE-mode]'  ; 
+ if(navigator.onLine)state='ONLINE-mode'  ; else state='OFFLINE-mode'  ; 
 var os		=navigator.platform.slice(0, 1),
      encApp	=  ' <a target="_blank" href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
      if (os=='L') {encApp	 ='<a target="_blank" href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
      else if (os=='W'){encApp='  <a target="_blank" href="http://www.gpg4win.org/">gpg4win</a>'; }   
      encApp += '/<a target="_blank" href="http://www.gpg4usb.org/download.html">gpg4usb</a>/<a target="_blank" href="https://addons.mozilla.org/en-US/thunderbird/addon/enigmail/">enigmail</a> or  <a target="_blank" href="https://www.gnupg.org/related_software/frontends.html#sec-1-1">other</a>. ' ;  
- encApp='Welcome, for your privateQ, use '+encApp + state;
+ encApp='For your privateQ use one of these additional applications:'+encApp +'You work now in '+ state;
      document.getElementById("encApp").innerHTML=encApp;
 
 }
