@@ -16,7 +16,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="css/cssmenu.css">
 
-    <style>  .floatleft {float: left; } .clearleft {clear: left;}</style>
+    
    <script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
      <script src="js/jquery.1.11.2.min.js"></script>    
      <script src="js/bootstrap.min.js"></script>
@@ -39,10 +39,19 @@
 </div>	  
 		 
 <div class="clearleft"></div>
-		 <div class="floatleft">  <textarea  id="ioput"></textarea> </div>
 		 
+ <div class="floatleft">
+	 <div style="display: block;">
+	 <div class="textwrapper"><textarea  id="ioput" cols="16" rows="4" ></textarea> </div></div>
+		</div>
 				  		 
-		<!--  document.getElementById("Giiaom").value = "75";
+		<!--  
+		</div> style="display: block;" id="rulesformitem" class="formitem">
+  <label for="rules" id="ruleslabel">Rules:</label>
+  <div class="textwrapper"><textarea cols="2" rows="10" id="rules"/></div>
+		 
+		
+		 document.getElementById("Giiaom").value = "75";
 		<input type="checkbox" onclick="GenrteIiaom()"  id="Giiaom" title="Tick it only to create your iiaom file. Iiaom is a crypto identity used as Inner Identifier And Outer Mask for authenticating human. Use it for more accountability and equality. Please work offline." unchecked >
 <input type="checkbox" id="ToHash" onclick="hash(window.content)"  unchecked >Iiaom	 
 

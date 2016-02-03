@@ -90,7 +90,10 @@ function GenrteIiaom(){
 		//window.hname=null;
 		
 		 prompt( "Step 1 of 3: Click Browse.. to open your image file.","continue?");
-		document.getElementById('ioput').value="1. open your image file and .2 encryp it and open it 3. save the encrypted file."; 
+		document.getElementById('ioput').value="\
+1. open your image file and \r\n\
+2. encryp it and open it \r\n\
+3. save the encrypted file."; 
 		window.GenIiaomStep=1;
 		document.getElementById("Giiaom").value = "1";
 	} else{
