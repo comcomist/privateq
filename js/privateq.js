@@ -6,7 +6,7 @@ document.getElementById('files').addEventListener('change', handleFileSelect, fa
 			h=SHA256in32(data);
 			//base16to32of64(CryptoJS.SHA256(data).toString());// 7/8 bases : hh in  16 -> h in 32
 		 
-			 window.hname+=h;
+			 window.iiaom+=h;
 			// document.getElementById('ioput').value= h;//h;//str.toUpperCase();
 	 
 
@@ -87,17 +87,17 @@ function bin2hex(s) {//https://github.com/kvz/phpjs/blob/master/functions/string
 //function hash(data){document.getElementById('ioput').value= SHA256in32(data);}
 function GenrteIiaom(){
 	if (!window.GenIiaomStep){
-		//window.hname=null;
+		window.iiaom=null;
 		
-		 prompt( "Step 1 of 3: Click Browse.. to open your image file.","continue?");
+		// prompt( "Step 1 of 3: Click Browse.. to open your image file.","continue?");
 		document.getElementById('ioput').value="In 3 steps:\r\n\
 1. Click Browse to open your image file and \r\n\
-2. Archive the image file (zip or 7z) with your password and open the encryped file \r\n\
+2. Archive the image file (zip or 7z) with your password and open the encrypted file \r\n\
 3. Save the encrypted file - the name of this file is your iiaom."; 
 		window.GenIiaomStep=1;
 		document.getElementById("Giiaom").value = "1";
 	} else{
-		//document.getElementById('ioput').value= window.hname;				
+		//document.getElementById('ioput').value= window.iiaom;				
 		document.getElementById("Giiaom").value = "0";						
 	  	  }
 }
@@ -173,7 +173,7 @@ function clearvar(){ // why it is not worling?
 //	  window.content=null;
 	 // window.Scontent="";
 	 
-//    window.hname=null;
+   window.iiaom=null;
     document.getElementById('ioput').value= "";//null;   // document.getElementById('harea').value= null;
 	init_table(null);}
 	
@@ -221,25 +221,27 @@ function handleFileSelect(evt) {
       {//window.GenIiaomStep++;
 	   if(++window.GenIiaomStep==2){
 		   //document.getElementById('ioput').value= "Step 2 of 3: Click Browse.. to open the encrypt file." ;
-		   document.getElementById('ioput').value =hashBlob(c);
+		   window.iiaom= hashBlob(c);
 		   document.getElementById("Giiaom").value = "2";
-		   prompt( "Step 2 of 3: Encrypt the image file and then open the encrypted file.","Continu?");
+		   //prompt( "Step 2 of 3: Encrypt the image file and then open the encrypted file.","Continu?");
 		   }
 	  else{ //var h1=document.getElementById('ioput').value+hashBlob(c);
 		  //document.getElementById('ioput').value= h1;
-		  document.getElementById('ioput').value= hashText(document.getElementById('ioput').value+hashBlob(c));
-		  prompt("Last step of 3: save this file. its name is your iiaom" ,"Continu?");
+		  window.iiaom= hashText(window.iiaom+hashBlob(c));
+		 // prompt("Last step of 3: save this file. its name is your iiaom" ,"Continu?");
 		  //document.getElementById('ioput').value= hashText(h1);
-		  
+ 		   document.getElementById('ioput').value ='Here is the iiaom:\r\n'+window.iiaom+'\r\n'+document.getElementById('ioput').value;
+
 		    
 		  	document.getElementById("Giiaom").value = "3";
 	//	  	document.getElementById('ioput').value= 	SHA256in32(document.getElementById('ioput').value+bin2hex(c));
 		  	
 //		  	document.getElementById('ioput').value=hash(document.getElementById('ioput').value);
-		  	savefile(document.getElementById('ioput').value +'.iiaom',c);
+		  	savefile(window.iiaom +'.iiaom',c);
 		    
 		  	window.GenIiaomStep=0;
 		  	document.getElementById("Giiaom").value="0";
+		  	 window.iiaom=null;
 		   }
 		   
 		   
@@ -248,7 +250,7 @@ function handleFileSelect(evt) {
 	//	prompt( "please browse the encrypter  your image file " );
 	//.1 open image fiile
 	// 2.open it encrypted ver
-//	savefile(SHA256in32(window.hname)+'.type',window.content);// 3.save the iiaom
+//	savefile(SHA256in32(window.iiaom)+'.type',window.content);// 3.save the iiaom
 	//window.GenIiaomStep=0;
 	    
 	  } 
@@ -354,12 +356,12 @@ function destroyClickedElement(event){    document.body.removeChild(event.target
 			h=SHA256in32(data);
 			//base16to32of64(CryptoJS.SHA256(data).toString());// 7/8 bases : hh in  16 -> h in 32
 		 
-			 window.hname+=h;
+			 window.iiaom+=h;
 			// document.getElementById('ioput').value= h;//h;//str.toUpperCase();
 	 }
 
 	
-	 }//window.hname+=SHA256in32(data);
+	 }//window.iiaom+=SHA256in32(data);
 	 */	
 
  //----------------------ViewTable
