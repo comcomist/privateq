@@ -90,10 +90,10 @@ function GenrteIiaom(){
 		//window.hname=null;
 		
 		 prompt( "Step 1 of 3: Click Browse.. to open your image file.","continue?");
-		document.getElementById('ioput').value="\
-1. open your image file and \r\n\
-2. encryp it and open it \r\n\
-3. save the encrypted file."; 
+		document.getElementById('ioput').value="In 3 steps:\r\n\
+1. Click Browse to open your image file and \r\n\
+2. Archive the image file (zip or 7z) with your password and open the encryped file \r\n\
+3. Save the encrypted file - the name of this file is your iiaom."; 
 		window.GenIiaomStep=1;
 		document.getElementById("Giiaom").value = "1";
 	} else{

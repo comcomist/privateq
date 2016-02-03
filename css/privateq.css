@@ -18,10 +18,8 @@
   }
 .floatleft {float: left; } 
 .clearleft {clear: left;}
-.boxsizingBorder {
-    -webkit-box-sizing: border-box;
+textarea{ padding:4%;  width:100%;
+-webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
-textarea{ padding:4%;  width:100%;}
+            box-sizing: border-box;}
 .textwrapper{  border:1px solid #999999;}
