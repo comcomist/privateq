@@ -92,8 +92,8 @@ function GenrteIiaom(){
 		// prompt( "Step 1 of 3: Click Browse.. to open your image file.","continue?");
 		document.getElementById('ioput').value="In 3 steps:\r\n\
 1. Click Browse to open your image file and \r\n\
-2. Archive the image file (zip or 7z) with your password and open the encrypted file \r\n\
-3. Save the encrypted file - the name of this file is your iiaom."; 
+2. Click Browse to open the password protected archive (7z or Zip) file of the image file, but first make the archive.\r\n\
+3. Save it, as its name is your iiaom."; 
 		window.GenIiaomStep=1;
 		document.getElementById("Giiaom").value = "1";
 	} else{
@@ -223,6 +223,7 @@ function handleFileSelect(evt) {
 		   //document.getElementById('ioput').value= "Step 2 of 3: Click Browse.. to open the encrypt file." ;
 		   window.iiaom= hashBlob(c);
 		   document.getElementById("Giiaom").value = "2";
+		   		document.getElementById('ioput').value= '2. Click Browse to open the password protected archive (7z or Zip) file of the image file, but first make the archive.';
 		   //prompt( "Step 2 of 3: Encrypt the image file and then open the encrypted file.","Continu?");
 		   }
 	  else{ //var h1=document.getElementById('ioput').value+hashBlob(c);
@@ -230,7 +231,10 @@ function handleFileSelect(evt) {
 		  window.iiaom= hashText(window.iiaom+hashBlob(c));
 		 // prompt("Last step of 3: save this file. its name is your iiaom" ,"Continu?");
 		  //document.getElementById('ioput').value= hashText(h1);
- 		   document.getElementById('ioput').value ='Here is the iiaom:\r\n'+window.iiaom+'\r\n'+document.getElementById('ioput').value;
+ 		   document.getElementById('ioput').value ='\
+Now save this file, its name is your iiaom and you can start sharing it.\r\n\
+The iiaom name you can use as your username in our equally owned site at https://comcomized.com . Welcome!\r\n\
+Here is the iiaom name:\r\n'+window.iiaom;
 
 		    
 		  	document.getElementById("Giiaom").value = "3";
