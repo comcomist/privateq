@@ -233,7 +233,7 @@ function handleFileSelect(evt) {
 		  //document.getElementById('ioput').value= hashText(h1);
  		   document.getElementById('ioput').value ='\
 Now save this file, its name is your iiaom and you can start sharing it.\r\n\
-The iiaom name you can use as your username in our equally owned site at https://comcomized.com . Welcome!\r\n\
+The iiaom name you can use as your Nickname in our equally owned site at https://comcomized.com . Welcome!\r\n\
 Here is the iiaom name:\r\n'+window.iiaom;
 
 		    
