@@ -93,9 +93,9 @@ var os		=navigator.platform.slice(0, 1),
      encApp	=  ' <a target="_blank" href="https://guardianproject.info/code/gnupg/">guardianproject</a>';
      if (os=='L') {encApp	 ='<a target="_blank" href="http://utils.kde.org/projects/kgpg/">kgpg</a>'; }
      else if (os=='W'){encApp='  <a target="_blank" href="http://www.gpg4win.org/">gpg4win</a>'; }   
-     encApp += '/<a target="_blank" href="http://www.gpg4usb.org/download.html">gpg4usb</a>/<a target="_blank" href="https://addons.mozilla.org/en-US/thunderbird/addon/enigmail/">enigmail</a> or  <a target="_blank" href="https://www.gnupg.org/related_software/frontends.html#sec-1-1">other</a>. ' ;  
- encApp='For your privateQ use one of these additional applications:'+encApp +'You work now in '+ state;
-     document.getElementById("encApp").innerHTML=encApp+'. For working offline <a target="_blank" href="https://github.com/comcomist/privateq/archive/master.zip">Download me</a>.'+'<br>Use your iiaom identity only mutually and use it for your communication and for democratic applications as a natural shell for being more protected from thief identity or mass surveillance. Eg before entering a <a target="_blank" href="https://meet.jit.si/">viop room</a>  msg your signed iiaom for being mutually verified.';
+     encApp += '/<a target="_blank" href="http://www.gpg4usb.org/download.html">gpg4usb</a>/<a target="_blank" href="https://addons.mozilla.org/en-US/thunderbird/addon/enigmail/">enigmail</a> and  <a target="_blank" href="https://www.gnupg.org/related_software/frontends.html#sec-1-1">more..</a>. ' ;  
+ encApp='You work now in '+state+'. For working offline <a target="_blank" href="https://github.com/comcomist/privateq/archive/master.zip">Download me</a>.<br>For your privateQ, after <a target="_blank" href="https://transfer.sh/">transfering</a> it, browse csv files to be sorted in table after encrypting/decrypting it by using one of these additional applications: '+encApp+'<br>Use your iiaom identity only mutually and use it for your communication and for democratic applications as a natural shell for being more protected from thief identity or mass surveillance. Eg before entering a <a target="_blank" href="https://meet.jit.si/">viop room</a>  msg your signed iiaom for being mutually verified.' ;
+     document.getElementById("encApp").innerHTML=encApp;
 
 }
 
