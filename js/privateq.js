@@ -103,10 +103,99 @@ function GenrteIiaom(){
 }
 			 
 //function EditContent(data){   document.getElementById('ioput').value=data;}
+function onc(i) {
+	if(document.getElementById("to_curve").checked ) 
+		{onc_column(i);
+			return ;
+			}
+			else 
+			{
+	var t = prompt( "Press ok to replace the value: " + i.textContent, i.textContent); //("+i.parentNode.rowIndex +","+ i.cellIndex +")
+  	if (t != null)  
+  	{i.textContent=t;}
 
-function onc(i) {var t = prompt( "Press ok to replace the value: " + i.textContent  , i.textContent);//("+i.parentNode.rowIndex +","+ i.cellIndex +")
- if (t != null)  i.textContent=t;}
+  }
+
+}
+//$('#table-container').keypress(function(event){...})
+//  if (event.which=='c') onc_column(0);//alert(String.fromCharCode(event.which)); 
  
+
+
+function onc_column(i) {
+	var t=window.t;//using window.t
+	var Inames = prompt( "Click ok to create a curve of all rows in this ("+ i.cellIndex  + "th) column. You are at row "+i.parentNode.rowIndex +". Which column number has the names of the records? " , "0"); 
+  	if (Inames != null) 
+  	{ var cellIndex=i.cellIndex,//	 could be done horizna by  t[i.parentNode.rowIndex];
+		  label  =t[0][cellIndex],//this lable
+		  length =t.length,
+	      names = [length-1],
+	      data  = [length-1];
+	  for (var i=1;i<length;i++){ names[i-1]=  t[i][Inames]; }	  //labels <== array of  record name (at columne 0 or userdfined)
+	  for (var i=1;i<length;i++){ data[i-1]= parseFloat(t[i][cellIndex] );  }  
+      var lineChartData = {	labels : names,
+	  datasets : [	
+	  {	label: label,
+		fillColor : "rgba(220,220,220,0.2)",
+		strokeColor : "rgba(220,220,220,1)",
+		pointColor : "rgba(220,220,220,1)",
+		pointStrokeColor : "#fff",
+		pointHighlightFill : "#fff",
+		pointHighlightStroke : "rgba(220,220,220,1)",
+		data : data				
+	  },		 ]        };
+	  canvas.width  = 600;
+	  canvas.height = 450;
+	  var ctx = document.getElementById("canvas").getContext("2d");
+	  window.myLine = new Chart(ctx).Line(lineChartData, {responsive: true});
+    }		
+}
+
+//cretae the curve of this column when the  key is pressed, where the function should exit on isNaN(p).  see line-customTooltips.html
+ 
+//using the var csv_data = $.csv.toArrays(data, csv_options); 
+//http://www.webdesignermag.co.uk/build-html5-charts-with-chart-js/ 
+//file:///home/a/Downloads/Chart.js-master/samples/line-customTooltips.html
+ /*  		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+		var lineChartData = {
+			labels : ["January","February","March","April","May","June","July"],
+			datasets : [
+				{
+		label: "Name1",
+		fillColor : "rgba(220,220,220,0.2)",
+		strokeColor : "rgba(220,220,220,1)",
+		pointColor : "rgba(220,220,220,1)",
+		pointStrokeColor : "#fff",
+		pointHighlightFill : "#fff",
+		pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				},
+				{
+		label: "Name2",
+		fillColor : "rgba(151,187,205,0.2)",
+		strokeColor : "rgba(151,187,205,1)",
+		pointColor : "rgba(151,187,205,1)",
+		pointStrokeColor : "#fff",
+		pointHighlightFill : "#fff",
+		pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				}
+			]
+
+		}
+
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(lineChartData, {
+			responsive: true
+		});
+	}
+
+
+*/
+
+
+
 function export2csv() {$('#table-container').table2CSV();}//	var t = prompt( "Press ok to" , "123i.textContent");}
 
 
@@ -136,7 +225,7 @@ function init_table(data) {// Thanks to Derek Eder under mit: Permission is here
       data = data.replace(/[\r|\r\n]/g, "\n");
       
       var csv_data = $.csv.toArrays(data, csv_options);
-      
+      window.t=csv_data;
       var   table_head=  "<thead><tr>";
 
       for (head_id = 0; head_id < csv_data[0].length; head_id++) { 
@@ -172,10 +261,16 @@ function init_table(data) {// Thanks to Derek Eder under mit: Permission is here
 function clearvar(){ // why it is not worling?
 //	  window.content=null;
 	 // window.Scontent="";
-	 
+window.t=null;
+window.myLine=null;	 
+//canvas.width  = 10;
+	//  canvas.height = 10;
+//	  canvas.context.clearRect ( 0 , 0 , 10 , 10 );
    window.iiaom=null;
     document.getElementById('ioput').value= "";//null;   // document.getElementById('harea').value= null;
-	init_table(null);}
+	init_table(null);
+	location.reload();
+	}
 	
 //---------------------------OpenFile http://www.html5rocks.com/en/tutorials/file/dndfiles/
 

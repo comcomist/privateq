@@ -4,51 +4,70 @@
   <head>  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-<meta content="utf-8" http-equiv="encoding">
+	<meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
-    <!-- Bootstrap core CSS  
-  -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/dataTables.bootstrap.css" rel="stylesheet">  
-    <link href="css/privateq.css" rel="stylesheet">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="css/cssmenu.css">
+    <!-- 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+     Bootstrap core CSS    -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/dataTables.bootstrap.css" rel="stylesheet">  
+    <link href="css/privateq.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/cssmenu.css">
     
-   <script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
+	 <script src="CryptoJS v3.1.2/rollups/sha256.js"></script>
      <script src="js/jquery.1.11.2.min.js"></script>    
      <script src="js/bootstrap.min.js"></script>
      <script src="js/jquery.csv.min.js"></script>
      <script src="js/jquery.dataTables.min.js"></script>    
      <script src="js/dataTables.bootstrap.js"></script> 
- 
-  
-<script src="js/table2CSV.js"></script>  
+	 <script src="js/table2CSV.js"></script>  
+	 <script src="js/Chart.js"></script>
 </head>
 <body> 
- <div class="container-fluid">
- <div><input type="file" id="files" name="file" />	
- <button onclick="GenrteIiaom()" title="Click this to create your iiaom in 3 steps. Iiaom is a crypto identity used as Inner Identifier And Outer Mask for authenticating human while protecting against identity thefts. Use it for more accountability and equality. Please work offline.">Generate Iiaom</button>
- <progress   id="Giiaom" value="0" max="3" ></progress>
- <button  onclick="clearvar();">Clear</button> 
- <div class="floatleft"></div>	  
- <div class="clearleft"></div>
+ 
+<div class="container-fluid">	
+ <div>
+  <button onclick="GenrteIiaom()" title="Click this to create your iiaom in 3 steps. Iiaom is a crypto identity used as Inner Identifier And Outer Mask for authenticating human while protecting against identity thefts. Use it for more accountability and equality. Please work offline.">Generate Iiaom</button>
+  <progress   id="Giiaom" value="0" max="3" ></progress>
+  <button  onclick="clearvar();">Clear</button> 
+  <input type="file" id="files" name="file" />
+ </div>
+ <div id='table-container'></div> 
+</div>
+
+<div id='chart-container'  style="float:left;">
+  <input type="checkbox" id="to_curve">
+  <div><canvas id="canvas" height="10" width="10" ></canvas></div>
+ </div>
  <div class="floatleft">
-<div id='chart-container' ></div>
- <div id='table-container'></div>
  <div class="textwrapper"><textarea  id="ioput" cols="48" rows="6" ></textarea> </div>
 </div>
-<div class="clearleft">
-		  <a target="_blank" href="http://namzezam.wikidot.com/humanitarian-agpl-license" style="font-weight: bold" >Under Humanitarian Agpl License</a></div> 
+ <div class="clearleft"></div>  
+ <div class="clearright"></div>
+   <a target="_blank" href="http://namzezam.wikidot.com/humanitarian-agpl-license" style="font-weight: bold" >Under Humanitarian Agpl License</a>
+ 
+<!--
+var canvas = document.getElementsByTagName('chart2')[0];
+canvas.width  = 450;//300
+canvas.height = 600;//30
 
-	  </div>
- 	  <div>	  </div>
+.clearRect(0, 0,ctx.canvas.width, ctx.canvas.height);//http://stackoverflow.com/questions/4938346/canvas-width-and-height-in-html5
+
+height="450" width="600"
+margin:0;padding:0;width:40%;
+-->
+
+
+ 
+  
+<script src="js/privateq.js"></script>
+
+  </body>	  
+ 	  
 	 
 
-	 </div>
-		  		 
+	 		  		 
 		<!--  
 	
 		
@@ -74,8 +93,6 @@
 
 	  
 
-<script src="js/privateq.js"></script>
 
-  </body>
 </html>
 
