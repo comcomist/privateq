@@ -86,14 +86,19 @@ function bin2hex(s) {//https://github.com/kvz/phpjs/blob/master/functions/string
 }*/
 //function hash(data){document.getElementById('ioput').value= SHA256in32(data);}
 function GenrteIiaom(){
+	
+	
 	if (!window.GenIiaomStep){
 		window.iiaom=null;
-		
+		window.iiaomcompareto =document.getElementById('ioput').value;
+		var stament1='is to be compared with the result of the following 3 steps. This is ok if you now generate your iiaom, otherwise you can click the clear to reset that. Here are the stpes:';
+			stament1=(window.iiaomcompareto)?window.iiaomcompareto+'\r\n'+stament1:'Nothing '+stament1;	
+//		if(window.iiaomcompareto){stament1=window.iiaomcompareto+'\r\n'+stament1;}else{stament1='Nothing '+stament1;}
 		// prompt( "Step 1 of 3: Click Browse.. to open your image file.","continue?");
-		document.getElementById('ioput').value="In 3 steps:\r\n\
-1. Click Browse to open your image file and \r\n\
-2. Click Browse to open the password protected archive (7z or Zip) file of the image file, but first make the archive.\r\n\
-3. Save it, as its name is your iiaom."; 
+		document.getElementById('ioput').value=stament1+" \r\n\
+1. Click Browse to open the image file of yourself or of the one you are to authenticate and \r\n\
+2. Click Browse to open the password protected archive (7z or Zip) file of the image file, but first make or get the archive.\r\n\
+3. If this image file is yours save it and have its name as your iiaom."; 
 		window.GenIiaomStep=1;
 		document.getElementById("Giiaom").value = "1";
 	} else{
@@ -263,6 +268,9 @@ function clearvar(){ // why it is not worling?
 	 // window.Scontent="";
 window.t=null;
 window.myLine=null;	 
+window.iiaomcompareto=null;
+window.GenIiaomStep=0;
+document.getElementById('Giiaom').value= "0"; 
 //canvas.width  = 10;
 	//  canvas.height = 10;
 //	  canvas.context.clearRect ( 0 , 0 , 10 , 10 );
@@ -326,17 +334,21 @@ function handleFileSelect(evt) {
 		  window.iiaom= hashText(window.iiaom+hashBlob(c));
 		 // prompt("Last step of 3: save this file. its name is your iiaom" ,"Continu?");
 		  //document.getElementById('ioput').value= hashText(h1);
- 		   document.getElementById('ioput').value ='\
-Now save this file, its name is your iiaom and you can start sharing it.\r\n\
-The iiaom name you can use as your Nickname in our equally owned site at https://comcomized.com . Welcome!\r\n\
-Here is the iiaom name:\r\n'+window.iiaom;
+	var isnotok = 'Here is the iiaom name:\r\n'+window.iiaom +'\r\n';
+	if(window.iiaomcompareto)
+	 {isnotok+='The iiaom was';
+		isnotok += (window.iiaomcompareto.localeCompare(window.iiaom)==0 )?'':' not';
+	  isnotok+=' compared successfully\r\n';	  }
+	  else{isnotok+='Now save this file, its name is your iiaom.'}
+//		var isnotok = window.iiaomcompareto.localeCompare(window.iiaom) ;	  
+ 		   document.getElementById('ioput').value =isnotok+' You can start using this iiaom as Nickname in our equally owned site at https://comcomized.com . Welcome!\r\n';
 
 		    
 		  	document.getElementById("Giiaom").value = "3";
 	//	  	document.getElementById('ioput').value= 	SHA256in32(document.getElementById('ioput').value+bin2hex(c));
 		  	
 //		  	document.getElementById('ioput').value=hash(document.getElementById('ioput').value);
-		  	savefile(window.iiaom +'.iiaom',c);
+	if(window.iiaomcompareto){}else	  	savefile(window.iiaom +'.iiaom',c);
 		    
 		  	window.GenIiaomStep=0;
 		  	document.getElementById("Giiaom").value="0";
