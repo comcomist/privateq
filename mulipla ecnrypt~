@@ -1,4 +1,0 @@
-gpg -e \
-  -r alice@example.com \
-  -r bob@example.com \
-p.txt
