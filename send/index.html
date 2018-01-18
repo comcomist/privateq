@@ -4,7 +4,9 @@
     <SCRIPT LANGUAGE="JavaScript">
 function readText (form) {
     TestVar =form.inputbox.value;
-    alert ("You typed: " + TestVar);
+  document.getElementById("sending").innerHTML =TestVar;
+  
+//    alert ("You typed: " + TestVar);
 }
   </SCRIPT>
   </head>
@@ -18,5 +20,6 @@ Enter Generated HTML code: <BR>
 <INPUT TYPE="text" NAME="inputbox" VALUE=""><P>
 <INPUT TYPE="button" NAME="button1" Value="Read" onClick="readText(this.form)">
 
+<p id="sending"></p>
   </body>
 </html>
